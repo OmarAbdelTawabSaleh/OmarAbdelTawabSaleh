@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar Abdel Tawab Saleh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+    /* --- General Body & Font Styles --- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: #1f293a; /* الخلفية موحدة */
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* --- Loading Page Styles --- */
+    #loading-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #1f293a;
+      z-index: 999;
+      transition: opacity 1s ease-out, visibility 1s ease-out;
+    }
+
+    #loading-page.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container span {
+      position: absolute;
+      left: 0;
+      width: 25px;
+      height: 5px;
+      background: #2c4766;
+      border-radius: 8px;
+      transform-origin: 100px;
+      transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+      animation: animateBlink 3s linear infinite;
+      animation-delay: calc(var(--i) * (3s / 50));
+    }
+
+    @keyframes animateBlink {
+      0% { background: #0ef; }
+      25% { background: #2c4766; }
+    }
+
+    .welcome-text {
+      color: #0ef;
+      font-size: 1.9em;
+      text-align: center;
+      position: absolute;
+      z-index: 10;
+      text-shadow: 0 0 10px silver;
+    }
+
+    .loading-text {
+      color: #fff;
+      font-size: 1em;
+      margin-top: 20px;
+    }
+
+    /* --- Main Content & Gradual Animations --- */
+    #main-content {
+      display: none;
+    }
+
+    #main-content.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .animate-on-load {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      animation-fill-mode: forwards;
+    }
+
+    .animate-on-load.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Profile Section --- */
+    .profile-container {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color:#2c4766;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      overflow: hidden;
+    }
+
+    .cover-photo img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: flex-end;
+      padding: 0 20px 20px 20px;
+      transform: translateY(-30px);
+    }
+
+    .profile-photo-wrapper {
+      width: 300px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      overflow: hidden;
+      position: relative;
+      transform: translateY(-120px);
+      box-shadow: 0 0 10px silver;
+      transition: box-shadow 0.5s ease-in-out;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      margin-right: 20px;
+    }
+
+    .profile-info h1 {
+      color: white;
+      text-shadow: 1px 1px 10px silver;
+      font-size: 24px;
+      margin-top: 35px;
+    }
+
+    .profile-info .bio {
+      color: #65676b;
+      margin-top: 5px;
+      text-shadow:0 0 10px #65676b
+    }
+
+    /* /* --- Social Links Styling (Updated) --- */
+.social-links {
+  display: flex;
+  gap: 20px; /* المسافة بين الأيقونات */
+  justify-content: center; /* توسيط الأيقونات أفقياً */
+  margin-top: 10px;
+}
+
+.social-links a {
+  font-size: 32px;
+  color: #1877f2;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+.social-links a.whatsapp {
+  color: #25D366;
+}
+
+/* ADD THIS NEW CSS RULE FOR INSTAGRAM */
+.social-links a.instagram {
+  color: #E1306C;
+}
+
+.social-links a:hover {
+  color: #0b59c3;
+}
+
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-links a.whatsapp {
+      color: #25D366;
+    }
+
+    .social-links a.instagram {
+      color: #E1306C;
+    }
+
+    .social-links a.facebook {
+      color: #1877f2;
+    }
+    .social-links a.telegram {
+      color: #0088cc;
+    }
+
+    .content-section {
+      padding: 20px;
+      margin-top: -30px;
+    }
+    /* ADD THIS NEW CSS RULE FOR GMAIL */
+.social-links a.gmail {
+  color: #DB4437; /* لون جوجل الأحمر */
+}
+/* تنسيق أيقونة الاتصال */
+
+
+    .content-section h2 {
+      color: #65676b;
+      font-size: 20px;
+      border-bottom: 1px solid #ced0d4;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    #vx {
+      color: white;
+      box-shadow: 0 0px 0px silver;
+      text-shadow: 1px 1px 10px silver;
+      text-align: center;
+      font-size: 1.6em;
+    }
+
+    .box {
+      height: 150px;
+      position: relative;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .box .circle {
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #2c4766;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 0 10px silver;
+      
+    }
+    
+    #sv {
+      color: white;
+      text-align: center;
+      font-size: 1.2em;
+      text-shadow: 0 1px 10px silver;
+    }
+
+    .ggg {
+      max-width: 800px;
+      margin: auto;
+      background: #2c4766;
+      padding: 20px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .ggg h2 {
+      color: white;
+      text-shadow: 0 1px 10px silver;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-right: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    li.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    li::before {
+      content: '●';
+      color: white;
+      font-size: 1.2em;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* --- Carousel & Progress Styles --- */
+    .carousel-section {
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 20px;
+      background: #2c4766;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-section h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 10px silver;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      margin: 2rem auto;
+      position: relative;
+      background-color: #f6f7fb;
+      border-radius: 12px;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      position: absolute;
+      transition: transform 300ms ease-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .m {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 30px;
+      max-width: 100%;
+      width: 350px;
+    }
+
+    .m::before {
+      content: "";
+      background-color: #e0e0e0;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 4px;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .progress {
+      background-color: #0C294B;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 4px;
+      width: 0%;
+      z-index: -1;
+      transition: 0.4s ease;
+    }
+
+    .m .circle {
+      background-color: #fff;
+      color: #999;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #e0e0e0;
+      transition: 0.4s ease;
+    }
+
+    .m .circle.active {
+      border-color: #0C294B;
+    }
+
+    .btn {
+      background-color: #0C294B;
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 8px 30px;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn:focus {
+      outline: 0;
+    }
+
+    .btn:disabled {
+      background-color: #e0e0e0;
+      cursor: not-allowed;
+    }
+    .rectangle-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 380px;
+      height: 150px;
+      background-color: #2c4766;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      box-sizing: border-box;
+      margin: 20px auto;
+    }
+
+    .item-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 5px;
+    }
+
+    .outer-circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(#ff5733, #33ff57, #3357ff, #f333ff, #ff5733);
+      animation: rotate 3s linear infinite;
+    }
+
+    .inner-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 15px);
+      height: calc(100% - 15px);
+      background-color: #1a1a1a;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .counter-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .counter-text {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    #loading-page.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+     /* New container with the requested styles */
+        .main-content-wrapper {
+            width: 340px; /* Requested width */
+            background-color: #2c4766; /* Requested background color */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5); /* Silver shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px; /* Space between the rectangle and stars */
+        }
+
+        /* Gradual fade-in from bottom to top */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Rotating color animation for background and borders */
+        @keyframes border-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Clickable rectangle design */
+        .rectangle {
+            width: 100%; /* Changed to be responsive to the new container */
+            height: 100px;
+            background-color: #21262d;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #58a6ff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            animation: fade-in-up 1s ease-out forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rectangle::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400% 400%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: border-glow 15s ease infinite;
+        }
+
+        .rectangle:hover {
+            transform: translateY(-5px);
+            background-color: #30363d;
+        }
+
+        /* Stars section design */
+        .stars-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            animation: fade-in-up 1s ease-out 0.5s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars-text {
+            font-size: 1.2rem;
+            color: #8b949e;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .star-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Star design and sizing */
+        .star {
+            width: 40px; /* Reduced star size for better fit */
+            height: 40px;
+            position: relative;
+            clip-path: polygon(50% 0%, 61.8% 38.2%, 100% 38.2%, 69.1% 61.8%, 80.9% 100%, 50% 76.4%, 19.1% 100%, 30.9% 61.8%, 0% 38.2%, 38.2% 38.2%);
+            
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400% 400%;
+            animation: border-glow 15s ease infinite;
+            
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Delay for each star's appearance */
+        .star:nth-child(1) { animation-delay: 1s; }
+        .star:nth-child(2) { animation-delay: 1.3s; }
+        .star:nth-child(3) { animation-delay: 1.6s; }
+        .star:nth-child(4) { animation-delay: 1.9s; }
+        .star:nth-child(5) { animation-delay: 2.2s; }
+
+  </style>
+</head>
+<body>
+  
+  <div id="loading-page">
+    <div class="container">
+      <span style="--i: 0"></span><span style="--i: 1"></span><span style="--i: 2"></span><span style="--i: 3"></span><span style="--i: 4"></span><span style="--i: 5"></span><span style="--i: 6"></span><span style="--i: 7"></span><span style="--i: 8"></span><span style="--i: 9"></span><span style="--i: 10"></span><span style="--i: 11"></span><span style="--i: 12"></span><span style="--i: 13"></span><span style="--i: 14"></span><span style="--i: 15"></span><span style="--i: 16"></span><span style="--i: 17"></span><span style="--i: 18"></span><span style="--i: 19"></span><span style="--i: 20"></span><span style="--i: 21"></span><span style="--i: 22"></span><span style="--i: 23"></span><span style="--i: 24"></span><span style="--i: 25"></span><span style="--i: 26"></span><span style="--i: 27"></span><span style="--i: 28"></span><span style="--i: 29"></span><span style="--i: 30"></span><span style="--i: 31"></span><span style="--i: 32"></span><span style="--i: 33"></span><span style="--i: 34"></span><span style="--i: 35"></span><span style="--i: 36"></span><span style="--i: 37"></span><span style="--i: 38"></span><span style="--i: 39"></span><span style="--i: 40"></span><span style="--i: 41"></span><span style="--i: 42"></span><span style="--i: 43"></span><span style="--i: 44"></span><span style="--i: 45"></span><span style="--i: 46"></span><span style="--i: 47"></span><span style="--i: 48"></span><span style="--i: 49"></span>
+      <h2 class="welcome-text" >
+        Welcome To My Website
+      </h2>
+    </div>
+    <div class="loading-text">جاري التحميل...</div>
+  </div>
+
+  <div id="main-content">
+      <div class="profile-container animate-on-load" data-delay="0.2">
+          <div class="cover-photo">
+              <img src="/Picsart_25-09-08_12-37-29-130.jpg" alt="Cover Photo">
+          </div>
+          <div class="profile-header">
+              <div class="profile-photo-wrapper">
+                  <img src="/Picsart_25-09-08_12-37-29-130.jpg" alt="Profile Photo" class="profile-photo">
+              </div>
+              <div class="profile-info">
+                  <h1 class="animate-on-load" data-delay="0.4">; Omar Abdel Tawab Saleh</h1>
+                  <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
+                  <div class="social-links animate-on-load" data-delay="1.2s">
+                      
+    <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+
+  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <h1 id="vx" class="animate-on-load" data-delay="0.8">
+    "Welcome To My Website" 
+  </h1>
+  <div class="rectangle-container animate-on-load" data-delay="1.0">
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter1" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">فرمتة جهاز</span>
+        </div>
+
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter2" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">عملية تهديد</span>
+        </div>
+
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter3" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">جمع معلومات</span>
+        </div>
+    </div>
+
+  <div class="box animate-on-load" data-delay="1.2">
+    <div class="circle circle-1">1</div>
+    <div class="circle circle-2">2</div>
+    <div class="circle circle-3">3</div>
+  </div>
+    <h1 id="sv" class="animate-on-load" data-delay="1.4">
+      "Don't forget to mention Allah"
+      <br>
+       "لا تنسى  ذكر الله "
+    </h1>
+    <div class="ggg animate-on-load" data-delay="1.6">
+    <h2>"Anti-cyberbullying guide"<br>
+    "دليل مكافحة الابتزاز الإلكتروني"
+    </h2>
+    <ul>
+      </div>
+        <li class="animate-on-load" data-delay="1.8">ما هو الابتزاز الإلكتروني وأنواعه المختلفة.</li>
+        <li class="animate-on-load" data-delay="2.0">كيفية التعرف على علامات الابتزاز والتهديد.</li>
+        <li class="animate-on-load" data-delay="2.2">نصائح مهمة للوقاية من الوقوع ضحية للابتزاز.</li>
+        <li class="animate-on-load" data-delay="2.4">خطوات عملية للتعامل مع المبتز وكيفية إنهاء الموقف.</li>
+        <li class="animate-on-load" data-delay="2.6">الجهات الرسمية والشرطية التي يمكن اللجوء إليها للمساعدة.</li>
+        <li class="animate-on-load" data-delay="2.8">أهمية عدم الاستجابة لطلبات المبتز وعدم دفع أي مبالغ مالية.</li>
+    </ul>
+</div>
+
+
+<div class="carousel-section animate-on-load" data-delay="3.0">
+    <h2>My portfolio ;</h2>
+    <div class="m">
+      <div class="progress" id="progress"></div>
+      <div class="circle active">5</div>
+      <div class="circle">4</div>
+      <div class="circle">3</div>
+      <div class="circle">2</div>
+      <div class="circle">1</div>
+    </div>
+
+    
+    <div class="carousel-wrapper">
+      <div class="slide" data-slide>
+        <img src="/Picsart_25-09-02_05-55-24-273.jpg">
+      </div>
+      <div class="slide" data-slide>
+        <img src="/Picsart_25-08-24_08-36-22-530.jpg" alt="Image">
+      </div>
+      <div class="slide" data-slide>
+        <img src="/Picsart_25-08-26_14-28-51-514.png" alt="Image">
+      </div>
+      <div class="slide" data-slide>
+        <img src="/Picsart_25-07-22_12-45-13-501.jpg" alt="Image">
+      </div>
+      <div class="slide" data-slide>
+        <img src="/IMG-20250512-WA0077.jpg" alt="Image">
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn" id="prev" disabled>السابق</button>
+      <button class="btn" id="next">التالي</button>
+    </div>
+<div class="social-links animate-on-load" data-delay="3.2">
+  <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="main-content-wrapper">
+        <a href="https://www.facebook.com/share/p/1CjA55hsBR/" class="rectangle">
+            "متنساش تقييم تعاملنا معاك" </a>
+
+        <div class="stars-container"
+            <div class="stars-text">
+             " دوس علي المربع "
+            </div>
+      
+            <div class="star-group">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+        </div>
+    </div>
+    <div style="text-shadow:0 0 10px silver;">
+    <span>&copy;</span> All rights reserved, Omar Abd El-Tawab Saleh
+</div>
+
+  
+  
+
+
+
+
+
+  <script>
+  setTimeout(function() {
+  const loadingPage = document.getElementById('loading-page');
+  const mainContent = document.getElementById('main-content');
+  
+  loadingPage.style.display = 'none';
+  mainContent.style.display = 'block';
+
+  setTimeout(() => {
+    mainContent.classList.add('visible');
+
+    // Get all elements with the new animation class
+    const animatedElements = document.querySelectorAll('.animate-on-load');
+
+    // Loop through each element and apply the animation with a delay
+    animatedElements.forEach((element) => {
+        const delay = parseFloat(element.getAttribute('data-delay'));
+        element.style.transitionDelay = delay + 's';
+        element.classList.add('visible');
+    });
+    
+    // Animate the social links specifically
+    const socialLinks = document.querySelectorAll('.social-links a');
+    socialLinks.forEach((link, index) => {
+        setTimeout(() => {
+            link.style.animation = 'popUp 0.1s ease-out forwards';
+            link.style.opacity = '1';
+        }, 500 + index * 200);
+    });
+
+    // **هذا هو الكود المصحح للعدادات**
+    function animateCounter(counterId, targetNumber, duration) {
+        const counter = document.getElementById(counterId);
+        let startTimestamp = null;
+
+        const animate = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = timestamp - startTimestamp;
+            const percentage = Math.min(progress / duration, 1);
+            const currentCount = Math.floor(percentage * targetNumber);
+
+            counter.textContent = currentCount;
+
+            if (percentage < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+        requestAnimationFrame(animate);
+    }
+
+    animateCounter('counter1', 97, 2000);
+    animateCounter('counter2', 50, 2500);
+    animateCounter('counter3', 120, 3000);
+
+  }, 50);
+}, 5000); // 5000 milliseconds = 5 seconds
+
+const circles = document.querySelectorAll('.circle');
+let counter = 1;
+
+function updateCounter() {
+    circles[0].textContent = counter;
+    circles[1].textContent = counter + 1;
+    circles[2].textContent = counter + 2;
+    counter = (counter % 98) + 1;
+}
+
+setInterval(updateCounter, 1000);
+
+// JavaScript for the integrated Carousel & Progress
+const slides = document.querySelectorAll("[data-slide]");
+const progress = document.getElementById("progress");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const carouselCircles = document.querySelectorAll(".m .circle"); // Using a specific selector
+
+let currSlide = 0;
+let maxSlide = slides.length - 1;
+
+let currentActive = 1;
+
+const updateCarousel = (number = 0) => {
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(${(index - number) * 100}%)`;
+  });
+};
+
+const updateProgress = () => {
+  carouselCircles.forEach((circle, index) => {
+    if (index < currentActive) {
+      circle.classList.add("active");
+    } else {
+      circle.classList.remove("active");
+    }
+  });
+
+  const actives = document.querySelectorAll(".m .circle.active");
+  progress.style.width =
+    ((actives.length - 1) / (carouselCircles.length - 1)) * 100 + "%";
+
+  if (currentActive === 1) {
+    prev.disabled = true;
+  } else if (currentActive === carouselCircles.length) {
+    next.disabled = true;
+  } else {
+    prev.disabled = false;
+    next.disabled = false;
+  }
+};
+
+next.addEventListener("click", () => {
+  currSlide++;
+  currentActive++;
+
+  if (currSlide > maxSlide) {
+    currSlide = 0;
+    currentActive = 1;
+  }
+
+  updateCarousel(currSlide);
+  updateProgress();
+});
+
+prev.addEventListener("click", () => {
+  currSlide--;
+  currentActive--;
+
+  if (currSlide < 0) {
+    currSlide = maxSlide;
+    currentActive = carouselCircles.length;
+  }
+
+  updateCarousel(currSlide);
+  updateProgress();
+});
+
+// تهيئة عند تحميل الصفحة
+updateCarousel();
+updateProgress();
+
+    
+  </script>
+  
+</body>
+</html>
