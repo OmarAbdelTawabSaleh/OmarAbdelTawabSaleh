@@ -11,12 +11,12 @@
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
 
-    /* --- General Body & Font Styles --- */
+    /* --- General Body & Font Styles (Optimized for Responsiveness) --- */
     body {
       margin: 0;
       padding: 0;
       font-family: "Poppins", sans-serif;
-      background: #1f293a; /* الخلفية موحدة */
+      background: #1f293a;
       color: #fff;
       overflow-x: hidden;
     }
@@ -28,7 +28,6 @@
       align-items: center;
       min-height: 100vh;
       flex-direction: column;
-      overflow: hidden;
       position: fixed;
       width: 100%;
       height: 100%;
@@ -73,7 +72,7 @@
 
     .welcome-text {
       color: #0ef;
-      font-size: 1.9em;
+      font-size: clamp(1.5em, 5vw, 1.9em); 
       text-align: center;
       position: absolute;
       z-index: 10;
@@ -89,11 +88,13 @@
     /* --- Main Content & Gradual Animations --- */
     #main-content {
       display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
     }
 
     #main-content.visible {
-      display: block;
       opacity: 1;
+      display: block;
     }
 
     .animate-on-load {
@@ -108,9 +109,10 @@
       transform: translateY(0);
     }
 
-    /* --- Profile Section --- */
+    /* --- Profile Section (Responsive & Right Aligned) --- */
     .profile-container {
-      max-width: 900px;
+      max-width: 95%; 
+      width: 900px; 
       margin: 20px auto;
       background-color:#2c4766;
       border-radius: 8px;
@@ -120,7 +122,7 @@
 
     .cover-photo img {
       width: 100%;
-      height: 200px;
+      height: clamp(150px, 25vw, 200px); 
       object-fit: cover;
     }
 
@@ -128,19 +130,21 @@
       display: flex;
       align-items: flex-end;
       padding: 0 20px 20px 20px;
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
 
     .profile-photo-wrapper {
-      width: 300px;
-      height: 160px;
+      width: clamp(120px, 20vw, 160px); 
+      height: clamp(120px, 20vw, 160px);
       border-radius: 50%;
       border: 4px solid #fff;
       overflow: hidden;
       position: relative;
-      transform: translateY(-120px);
+      /* التعديل الجديد: رفع بمقدار 80px لتتوسط الدائرة الحد الفاصل على الشاشات الكبيرة */
+      transform: translateY(calc(-50% - 80px)); 
       box-shadow: 0 0 10px silver;
       transition: box-shadow 0.5s ease-in-out;
+      flex-shrink: 0; 
     }
 
     .profile-photo {
@@ -150,85 +154,89 @@
     }
 
     .profile-info {
-      margin-right: 20px;
+      margin-right: 20px; 
+      flex-grow: 1; 
+      align-self: flex-end; 
+      text-align: right; 
     }
 
     .profile-info h1 {
       color: white;
       text-shadow: 1px 1px 10px silver;
-      font-size: 24px;
-      margin-top: 35px;
+      font-size: clamp(20px, 4vw, 24px); 
+      margin-top: clamp(20px, 5vw, 35px);
     }
 
     .profile-info .bio {
       color: #65676b;
       margin-top: 5px;
-      text-shadow:0 0 10px #65676b
+      text-shadow:0 0 10px #65676b;
+      font-size: clamp(14px, 3vw, 16px); 
     }
 
-    /* /* --- Social Links Styling (Updated) --- */
-.social-links {
-  display: flex;
-  gap: 20px; /* المسافة بين الأيقونات */
-  justify-content: center; /* توسيط الأيقونات أفقياً */
-  margin-top: 10px;
-}
+    /* --- تعديل استعلام الوسائط للحفاظ على اتجاه اليمين --- */
+    @media (max-width: 600px) {
+        .profile-header {
+            flex-wrap: wrap; 
+            transform: translateY(-50px);
+            padding-bottom: 0;
+            padding-top: 10px;
+        }
+        
+        .profile-photo-wrapper {
+            width: 100px;
+            height: 100px;
+            /* التعديل الجديد: رفع بمقدار 50px لتتوسط الدائرة الحد الفاصل على الجوال */
+            transform: translateY(-50px); 
+            margin-left: 10px; 
+            margin-right: 10px;
+        }
 
-.social-links a {
-  font-size: 32px;
-  color: #1877f2;
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-  display: inline-block;
-}
+        .profile-info {
+            width: 100%; 
+            margin-right: 0;
+            text-align: right; 
+        }
+    }
+    /* ---------------------------------------------------------------------------------- */
 
-.social-links a:hover {
-  transform: scale(1.2);
-}
 
-.social-links a.whatsapp {
-  color: #25D366;
-}
+    /* --- Social Links Styling (Equal Size & Spacing) --- */
+    .social-links {
+      display: flex;
+      gap: clamp(10px, 3vw, 20px); 
+      justify-content: flex-end;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
 
-/* ADD THIS NEW CSS RULE FOR INSTAGRAM */
-.social-links a.instagram {
-  color: #E1306C;
-}
-
-.social-links a:hover {
-  color: #0b59c3;
-}
-
+    .carousel-section .social-links {
+        justify-content: center;
+    }
+    
+    .social-links a {
+      font-size: clamp(28px, 6vw, 32px); 
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+      display: inline-block;
+    }
 
     .social-links a:hover {
       transform: scale(1.2);
     }
 
-    .social-links a.whatsapp {
-      color: #25D366;
-    }
+    .social-links a.whatsapp { color: #25D366; }
+    .social-links a.instagram { color: #E1306C; }
+    .social-links a.facebook { color: #1877f2; }
+    .social-links a.telegram { color: #0088cc; }
+    .social-links a.gmail { color: #DB4437; } 
+    .social-links a:hover { color: #0b59c3; }
 
-    .social-links a.instagram {
-      color: #E1306C;
-    }
-
-    .social-links a.facebook {
-      color: #1877f2;
-    }
-    .social-links a.telegram {
-      color: #0088cc;
-    }
 
     .content-section {
       padding: 20px;
       margin-top: -30px;
     }
-    /* ADD THIS NEW CSS RULE FOR GMAIL */
-.social-links a.gmail {
-  color: #DB4437; /* لون جوجل الأحمر */
-}
-/* تنسيق أيقونة الاتصال */
-
-
+    
     .content-section h2 {
       color: #65676b;
       font-size: 20px;
@@ -242,54 +250,68 @@
       box-shadow: 0 0px 0px silver;
       text-shadow: 1px 1px 10px silver;
       text-align: center;
-      font-size: 1.6em;
+      font-size: clamp(1.2em, 4vw, 1.6em); 
+      margin: 20px 0;
     }
-
+    
+    /* --- Box for Circles (Ensuring Equal Size and Consistency) --- */
     .box {
-      height: 150px;
+      max-width: 350px; 
+      margin: 20px auto;
+      height: 120px; 
       position: relative;
       border-radius: 10px;
       display: flex;
       justify-content: space-around;
       align-items: center;
       overflow: hidden;
+      background: #2c4766; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
     }
     
     .box .circle {
-      width: 50px;
-      height: 50px;
+      width: clamp(40px, 8vw, 50px); 
+      height: clamp(40px, 8vw, 50px);
       background-color: white;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #2c4766;
-      font-size: 24px;
+      font-size: clamp(18px, 4vw, 24px); 
       font-weight: bold;
       box-shadow: 0 0 10px silver;
-      
     }
     
     #sv {
       color: white;
       text-align: center;
-      font-size: 1.2em;
+      font-size: clamp(1em, 3vw, 1.2em); 
       text-shadow: 0 1px 10px silver;
+      margin: 20px 0;
     }
 
     .ggg {
-      max-width: 800px;
-      margin: auto;
+      max-width: 95%; 
+      width: 800px; 
+      margin: 20px auto;
       background: #2c4766;
       padding: 20px 40px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    @media (max-width: 600px) {
+        .ggg {
+            padding: 20px;
+        }
     }
 
     .ggg h2 {
       color: white;
       text-shadow: 0 1px 10px silver;
       text-align: center;
+      font-size: clamp(18px, 4vw, 22px); 
     }
 
     ul {
@@ -305,6 +327,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease-out, transform 1s ease-out;
+      font-size: clamp(14px, 3vw, 16px); 
     }
 
     li.visible {
@@ -326,10 +349,11 @@
       transform: translateY(-50%);
     }
 
-    /* --- Carousel & Progress Styles --- */
+    /* --- Carousel & Progress Styles (Responsive) --- */
     .carousel-section {
       margin: 40px auto;
-      max-width: 900px;
+      max-width: 95%; 
+      width: 900px; 
       padding: 20px;
       background: #2c4766;
       border-radius: 8px;
@@ -341,11 +365,11 @@
       color: #fff;
       margin-bottom: 20px;
       text-shadow: 1px 1px 10px silver;
+      font-size: clamp(20px, 4vw, 24px); 
     }
 
     .carousel-wrapper {
       width: 100%;
-      max-width: 900px;
       aspect-ratio: 16/9;
       overflow: hidden;
       margin: 2rem auto;
@@ -368,14 +392,15 @@
       object-fit: cover;
       border-radius: inherit;
     }
-
+    
+    /* Progress Circles (Consistent and Centered) */
     .m {
       display: flex;
       justify-content: space-between;
       position: relative;
-      margin-bottom: 30px;
+      margin: 0 auto 30px auto; 
       max-width: 100%;
-      width: 350px;
+      width: clamp(250px, 50vw, 350px); 
     }
 
     .m::before {
@@ -403,16 +428,17 @@
     }
 
     .m .circle {
+      height: clamp(20px, 5vw, 30px); 
+      width: clamp(20px, 5vw, 30px);
       background-color: #fff;
       color: #999;
       border-radius: 50%;
-      height: 30px;
-      width: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 3px solid #e0e0e0;
       transition: 0.4s ease;
+      font-size: clamp(12px, 3vw, 14px); 
     }
 
     .m .circle.active {
@@ -426,33 +452,23 @@
       border-radius: 6px;
       cursor: pointer;
       font-family: inherit;
-      padding: 8px 30px;
+      padding: 8px clamp(15px, 4vw, 30px); 
       margin: 5px;
-      font-size: 14px;
+      font-size: clamp(12px, 3vw, 14px); 
     }
 
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn:focus {
-      outline: 0;
-    }
-
-    .btn:disabled {
-      background-color: #e0e0e0;
-      cursor: not-allowed;
-    }
+    /* --- Counter Rectangles (Ensuring Equal Size and Consistency) --- */
     .rectangle-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around; 
       align-items: center;
-      max-width: 380px;
-      height: 150px;
+      max-width: 95%; 
+      width: 400px; 
+      height: clamp(120px, 20vw, 150px); 
       background-color: #2c4766;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
+      padding: 10px 10px; 
       box-sizing: border-box;
       margin: 20px auto;
     }
@@ -462,12 +478,14 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex: 1; 
+      margin: 0 5px; 
     }
 
     .circle-container {
       position: relative;
-      width: 80px;
-      height: 80px;
+      width: clamp(60px, 12vw, 80px); 
+      height: clamp(60px, 12vw, 80px);
       border-radius: 50%;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -490,8 +508,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: calc(100% - 15px);
-      height: calc(100% - 15px);
+      width: calc(100% - 10px); 
+      height: calc(100% - 10px);
       background-color: #1a1a1a;
       border-radius: 50%;
       display: flex;
@@ -502,52 +520,42 @@
     }
 
     .counter-number {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem); 
       font-weight: bold;
       color: #fff;
     }
 
     .counter-text {
-      font-size: 0.8rem;
+      font-size: clamp(0.7rem, 2vw, 0.8rem); 
       color: #ccc;
       margin-top: 5px;
+      white-space: nowrap; 
     }
 
     @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    #loading-page.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-     /* New container with the requested styles */
+    
+     /* New container with the requested styles (Responsive) */
         .main-content-wrapper {
-            width: 340px; /* Requested width */
-            background-color: #2c4766; /* Requested background color */
+            max-width: 95%; 
+            width: 380px; 
+            margin: 40px auto;
+            background-color: #2c4766;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5); /* Silver shadow */
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 50px; /* Space between the rectangle and stars */
+            gap: 20px; 
         }
 
         /* Gradual fade-in from bottom to top */
         @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Rotating color animation for background and borders */
@@ -557,10 +565,10 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Clickable rectangle design */
+        /* Clickable rectangle design (Responsive) */
         .rectangle {
-            width: 100%; /* Changed to be responsive to the new container */
-            height: 100px;
+            width: 100%; 
+            height: clamp(80px, 15vw, 100px); 
             background-color: #21262d;
             border-radius: 8px;
             display: flex;
@@ -568,7 +576,7 @@
             align-items: center;
             text-decoration: none;
             color: #58a6ff;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
             font-weight: bold;
             transition: transform 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
@@ -602,7 +610,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
             animation: fade-in-up 1s ease-out 0.5s forwards;
             opacity: 0;
             position: relative;
@@ -610,20 +618,20 @@
         }
 
         .stars-text {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem); 
             color: #8b949e;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         .star-group {
             display: flex;
-            gap: 10px;
+            gap: 5px; 
         }
 
-        /* Star design and sizing */
+        /* Star design and sizing (Equal size) */
         .star {
-            width: 40px; /* Reduced star size for better fit */
-            height: 40px;
+            width: clamp(30px, 8vw, 40px); 
+            height: clamp(30px, 8vw, 40px);
             position: relative;
             clip-path: polygon(50% 0%, 61.8% 38.2%, 100% 38.2%, 69.1% 61.8%, 80.9% 100%, 50% 76.4%, 19.1% 100%, 30.9% 61.8%, 0% 38.2%, 38.2% 38.2%);
             
@@ -640,6 +648,15 @@
         .star:nth-child(3) { animation-delay: 1.6s; }
         .star:nth-child(4) { animation-delay: 1.9s; }
         .star:nth-child(5) { animation-delay: 2.2s; }
+        
+        /* Footer/Copyright */
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #ccc;
+            text-shadow: 0 0 10px silver;
+        }
 
   </style>
 </head>
@@ -665,22 +682,22 @@
                   <img src="./Picsart_25-09-08_12-37-29-130.jpg" alt="Profile Photo" class="profile-photo">
               </div>
               <div class="profile-info">
-                  <h1 class="animate-on-load" data-delay="0.4">; Omar Abdel Tawab Saleh</h1>
+                  <h1 class="animate-on-load" data-delay="0.4">OmarAbdelTawabSaleh</h1>
                   <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
                   <div class="social-links animate-on-load" data-delay="1.2s">
                       
     <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
 
-  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
   <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
 
 
                   </div>
               </div>
           </div>
       </div>
-  </div>
+  
 
   <h1 id="vx" class="animate-on-load" data-delay="0.8">
     "Welcome To My Website" 
@@ -732,7 +749,6 @@
     "دليل مكافحة الابتزاز الإلكتروني"
     </h2>
     <ul>
-      </div>
         <li class="animate-on-load" data-delay="1.8">ما هو الابتزاز الإلكتروني وأنواعه المختلفة.</li>
         <li class="animate-on-load" data-delay="2.0">كيفية التعرف على علامات الابتزاز والتهديد.</li>
         <li class="animate-on-load" data-delay="2.2">نصائح مهمة للوقاية من الوقوع ضحية للابتزاز.</li>
@@ -740,18 +756,18 @@
         <li class="animate-on-load" data-delay="2.6">الجهات الرسمية والشرطية التي يمكن اللجوء إليها للمساعدة.</li>
         <li class="animate-on-load" data-delay="2.8">أهمية عدم الاستجابة لطلبات المبتز وعدم دفع أي مبالغ مالية.</li>
     </ul>
-</div>
+    </div> 
 
 
 <div class="carousel-section animate-on-load" data-delay="3.0">
     <h2>My portfolio ;</h2>
     <div class="m">
       <div class="progress" id="progress"></div>
-      <div class="circle active">5</div>
-      <div class="circle">4</div>
-      <div class="circle">3</div>
+      <div class="circle active">1</div> 
       <div class="circle">2</div>
-      <div class="circle">1</div>
+      <div class="circle">3</div>
+      <div class="circle">4</div>
+      <div class="circle">5</div>
     </div>
 
     
@@ -784,11 +800,11 @@
   <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
 </div>
 </div>
-<div class="main-content-wrapper">
+<div class="main-content-wrapper animate-on-load" data-delay="3.4">
         <a href="https://www.facebook.com/share/p/1CjA55hsBR/" class="rectangle">
             "متنساش تقييم تعاملنا معاك" </a>
 
-        <div class="stars-container"
+        <div class="stars-container">
             <div class="stars-text">
              " دوس علي المربع "
             </div>
@@ -802,18 +818,11 @@
             </div>
         </div>
     </div>
-    <div style="text-shadow:0 0 10px silver;">
+    <div class="copyright">
     <span>&copy;</span> All rights reserved, Omar Abd El-Tawab Saleh
 </div>
 
-  
-  
-
-
-
-
-
-  <script>
+  </div> <script>
   setTimeout(function() {
   const loadingPage = document.getElementById('loading-page');
   const mainContent = document.getElementById('main-content');
@@ -838,12 +847,11 @@
     const socialLinks = document.querySelectorAll('.social-links a');
     socialLinks.forEach((link, index) => {
         setTimeout(() => {
-            link.style.animation = 'popUp 0.1s ease-out forwards';
             link.style.opacity = '1';
         }, 500 + index * 200);
     });
 
-    // **هذا هو الكود المصحح للعدادات**
+    // **كود العدادات**
     function animateCounter(counterId, targetNumber, duration) {
         const counter = document.getElementById(counterId);
         let startTimestamp = null;
@@ -870,14 +878,17 @@
   }, 50);
 }, 5000); // 5000 milliseconds = 5 seconds
 
-const circles = document.querySelectorAll('.circle');
+// كود دوائر الأرقام 1, 2, 3
+const circles = document.querySelectorAll('.box .circle'); 
 let counter = 1;
 
 function updateCounter() {
-    circles[0].textContent = counter;
-    circles[1].textContent = counter + 1;
-    circles[2].textContent = counter + 2;
-    counter = (counter % 98) + 1;
+    if (circles.length >= 3) {
+      circles[0].textContent = counter;
+      circles[1].textContent = counter + 1;
+      circles[2].textContent = counter + 2;
+      counter = (counter % 98) + 1;
+    }
 }
 
 setInterval(updateCounter, 1000);
@@ -887,7 +898,7 @@ const slides = document.querySelectorAll("[data-slide]");
 const progress = document.getElementById("progress");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
-const carouselCircles = document.querySelectorAll(".m .circle"); // Using a specific selector
+const carouselCircles = document.querySelectorAll(".carousel-section .m .circle"); 
 
 let currSlide = 0;
 let maxSlide = slides.length - 1;
@@ -901,21 +912,21 @@ const updateCarousel = (number = 0) => {
 };
 
 const updateProgress = () => {
+  // تفعيل الدوائر بناءً على الشريحة الحالية
   carouselCircles.forEach((circle, index) => {
-    if (index < currentActive) {
+    if (index === currSlide) {
       circle.classList.add("active");
     } else {
       circle.classList.remove("active");
     }
   });
+  
+  progress.style.width = (currSlide / (carouselCircles.length - 1)) * 100 + "%";
 
-  const actives = document.querySelectorAll(".m .circle.active");
-  progress.style.width =
-    ((actives.length - 1) / (carouselCircles.length - 1)) * 100 + "%";
-
-  if (currentActive === 1) {
+  // تفعيل وإلغاء تفعيل الأزرار
+  if (currSlide === 0) {
     prev.disabled = true;
-  } else if (currentActive === carouselCircles.length) {
+  } else if (currSlide === maxSlide) {
     next.disabled = true;
   } else {
     prev.disabled = false;
@@ -924,29 +935,19 @@ const updateProgress = () => {
 };
 
 next.addEventListener("click", () => {
-  currSlide++;
-  currentActive++;
-
-  if (currSlide > maxSlide) {
-    currSlide = 0;
-    currentActive = 1;
+  if (currSlide < maxSlide) {
+    currSlide++;
+    updateCarousel(currSlide);
+    updateProgress();
   }
-
-  updateCarousel(currSlide);
-  updateProgress();
 });
 
 prev.addEventListener("click", () => {
-  currSlide--;
-  currentActive--;
-
-  if (currSlide < 0) {
-    currSlide = maxSlide;
-    currentActive = carouselCircles.length;
+  if (currSlide > 0) {
+    currSlide--;
+    updateCarousel(currSlide);
+    updateProgress();
   }
-
-  updateCarousel(currSlide);
-  updateProgress();
 });
 
 // تهيئة عند تحميل الصفحة
