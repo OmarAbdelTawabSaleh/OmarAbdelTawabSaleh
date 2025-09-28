@@ -140,7 +140,6 @@
       border: 4px solid #fff;
       overflow: hidden;
       position: relative;
-      /* التعديل الجديد: رفع بمقدار 80px لتتوسط الدائرة الحد الفاصل على الشاشات الكبيرة */
       transform: translateY(calc(-50% - 80px)); 
       box-shadow: 0 0 10px silver;
       transition: box-shadow 0.5s ease-in-out;
@@ -157,22 +156,31 @@
       margin-right: 20px; 
       flex-grow: 1; 
       align-self: flex-end; 
-      text-align: right; 
     }
 
-    .profile-info h1 {
-      color: white;
-      text-shadow: 1px 1px 10px silver;
-      font-size: clamp(20px, 4vw, 24px); 
-      margin-top: clamp(20px, 5vw, 35px);
-    }
+.name-bio-wrapper {
+    width: 60%; 
+    margin-right: 140px; 
+    margin-left: 0; 
+    text-align: left; 
+    transform: translateY(-20px); 
+}
 
-    .profile-info .bio {
-      color: #65676b;
-      margin-top: 5px;
-      text-shadow:0 0 10px #65676b;
-      font-size: clamp(14px, 3vw, 16px); 
-    }
+.profile-info h1 {
+  color: white;
+  text-shadow: 1px 1px 10px silver;
+  font-size: 1.2em; 
+  margin-top: 0; 
+  margin-bottom: 5px; 
+}
+
+.profile-info .bio {
+  color: #65676b;
+  margin-top: 5px; 
+  text-shadow:0 0 10px #65676b;
+  font-size: 18px; 
+}
+
 
     /* --- تعديل استعلام الوسائط للحفاظ على اتجاه اليمين --- */
     @media (max-width: 600px) {
@@ -186,7 +194,6 @@
         .profile-photo-wrapper {
             width: 100px;
             height: 100px;
-            /* التعديل الجديد: رفع بمقدار 50px لتتوسط الدائرة الحد الفاصل على الجوال */
             transform: translateY(-50px); 
             margin-left: 10px; 
             margin-right: 10px;
@@ -195,6 +202,9 @@
         .profile-info {
             width: 100%; 
             margin-right: 0;
+        }
+        
+        .name-bio-wrapper {
             text-align: right; 
         }
     }
@@ -245,44 +255,79 @@
       margin-bottom: 20px;
     }
 
+    /* ******************************************************
+     * التعديل 1: تجاوب وتوسيط "Welcome To My Website"
+     ****************************************************** */
     #vx {
-      color: white;
-      box-shadow: 0 0px 0px silver;
-      text-shadow: 1px 1px 10px silver;
+      color: white;/* تغيير لون النص ليتناسب مع الخلفية البيضاء */
+      background-color: #2c4766; 
+      /* لجعل العنصر قابلاً للتوسيط داخل div أو body */
+      display: block; 
+      width: fit-content; /* عرض بحجم المحتوى فقط */
       text-align: center;
+      margin: 20px auto; /* التوسيط الأفقي */
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-shadow: none;
       font-size: clamp(1.2em, 4vw, 1.6em); 
-      margin: 20px 0;
     }
     
     /* --- Box for Circles (Ensuring Equal Size and Consistency) --- */
-    .box {
-      max-width: 350px; 
-      margin: 20px auto;
-      height: 120px; 
-      position: relative;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      overflow: hidden;
-      background: #2c4766; 
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-    }
-    
-    .box .circle {
-      width: clamp(40px, 8vw, 50px); 
-      height: clamp(40px, 8vw, 50px);
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #2c4766;
-      font-size: clamp(18px, 4vw, 24px); 
-      font-weight: bold;
-      box-shadow: 0 0 10px silver;
-    }
-    
+.box {
+  width: 90%; 
+  margin: 20px auto;
+  height: 120px;
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  background: #2c4766; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.box .circle {
+  width: clamp(40px, 8vw, 50px);
+  height: clamp(40px, 8vw, 50px);
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c4766;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: bold;
+  box-shadow: 0 0 10px silver;
+  position: relative;
+  z-index: 1;
+}
+
+/* إنشاء الإطار الدوار */
+.box .circle::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: silver;
+  border-right-color: silver;
+  animation: spin 2.5s linear infinite; /* سرعة دوران معتدلة */
+  z-index: -1;
+}
+
+/* تحديد حركة الدوران */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
     #sv {
       color: white;
       text-align: center;
@@ -290,15 +335,19 @@
       text-shadow: 0 1px 10px silver;
       margin: 20px 0;
     }
-
+    
+    /* ******************************************************
+     * التعديل المطلوب: تعديل عرض الحاوية .ggg 
+     * ليتناسب مع الحاويات الأخرى (900px)
+     ****************************************************** */
     .ggg {
       max-width: 95%; 
-      width: 800px; 
+      width: 900px; 
       margin: 20px auto;
-      background: #2c4766;
+      background: transparent; /* إخفاء الخلفية */
       padding: 20px 40px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: none; /* إزالة الظل */
     }
     
     @media (max-width: 600px) {
@@ -306,50 +355,137 @@
             padding: 20px;
         }
     }
-
+    
+    /* ******************************************************
+     * التعديل 1: تجاوب وتوسيط "دليل مكافحة الابتزاز الإلكتروني"
+     * التعديل المطلوب: تغيير الخلفية البيضاء إلى لون خلفية الحاوية (#2c4766)
+     ****************************************************** */
     .ggg h2 {
       color: white;
-      text-shadow: 0 1px 10px silver;
+      background-color: #2c4766; 
+      display: block; 
+      width: 90%; /* عرض ليتناسب مع حاويات الدوائر */
+      max-width: 800px; /* ضمان عدم التمدد أكثر من اللازم */
+      padding: 10px 15px; /* تباعد يتناسب مع حجم الدائرة */
+      text-shadow: none;
+      border-radius: 8px; /* تدوير الحواف ليصبح أكثر شبهاً بالصناديق */
       text-align: center;
-      font-size: clamp(18px, 4vw, 22px); 
+      font-size: clamp(18px, 4vw, 22px);
+      margin: 20px auto; /* التوسيط الأفقي */
     }
+    
+/* --- تأثيرات الدائرة المتحركة وواجهة النص (القائمة) --- */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+.rtl-list {
+    direction: rtl; 
+    text-align: right; 
+}
 
-    li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      position: relative;
-      padding-right: 30px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-      font-size: clamp(14px, 3vw, 16px); 
-    }
+li {
+    padding: 15px 50px 15px 15px; 
+    /* ******************************************************
+     * التعديل 2: إزالة الخطوط الفاصلة
+     ****************************************************** */
+    border-bottom: none; 
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+    font-size: clamp(14px, 3vw, 18px); 
+    /* ******************************************************
+     * التعديل 2: جعل الخط سميك قليلاً
+     ****************************************************** */
+    font-weight: 500; 
+    color: white;
+    overflow: hidden;
+    display: flex; /* لضمان المحاذاة المتساوية */
+    align-items: center; /* المحاذاة في المنتصف عمودياً */
+}
 
-    li.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+li:last-child {
+    /*border-bottom: none; *//* لم يعد ضرورياً بعد إزالة border-bottom من li */
+    padding-bottom: 0;
+}
 
-    li:last-child {
-      border-bottom: none;
-    }
+li.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    li::before {
-      content: '●';
-      color: white;
-      font-size: 1.2em;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+.main-text {
+    display: inline-block;
+    max-width: 100%;
+}
 
-    /* --- Carousel & Progress Styles (Responsive) --- */
+
+/* الدائرة المتحركة (على اليمين) */
+li::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    left: unset;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg); 
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 4px solid black; 
+    border-top-color: var(--circle-color); 
+    border-right-color: var(--circle-color);
+    z-index: 10;
+    /* ******************************************************
+     * التعديل 3: إضافة لون أسود شفاف لمركز الدائرة
+     ****************************************************** */
+    background: white;
+    animation: spin 1s linear infinite; 
+}
+
+/* تحديد ألوان الإطار المتحرك لكل عنصر */
+.rtl-list li:nth-child(1) { --circle-color: #ff5733; }
+.rtl-list li:nth-child(2) { --circle-color: #33ff57; }
+.rtl-list li:nth-child(3) { --circle-color: #3357ff; }
+.rtl-list li:nth-child(4) { --circle-color: #f333ff; }
+.rtl-list li:nth-child(5) { --circle-color: #ffcc00; }
+.rtl-list li:nth-child(6) { --circle-color: #00ffff; }
+
+
+/* تنسيق الشرح المخفي */
+.description {
+    display: none; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    font-size: clamp(12px, 2.5vw, 14px);
+    color: #eee;
+    z-index: 20;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-end; /* المحاذاة إلى اليمين */
+    text-align: right;
+    direction: rtl;
+}
+
+li.show-description .main-text {
+    opacity: 0;
+}
+
+li.show-description .description {
+    display: flex;
+}
+
+li.show-description::before {
+    display: none;
+}
+
+/* --- Carousel & Progress Styles (Responsive & RTL) --- */
     .carousel-section {
       margin: 40px auto;
       max-width: 95%; 
@@ -393,9 +529,10 @@
       border-radius: inherit;
     }
     
-    /* Progress Circles (Consistent and Centered) */
+    /* Progress Circles (RTL: Right to Left) */
     .m {
       display: flex;
+      flex-direction: row-reverse; /* عكس الترتيب ليكون من اليمين لليسار */
       justify-content: space-between;
       position: relative;
       margin: 0 auto 30px auto; 
@@ -408,7 +545,8 @@
       background-color: #e0e0e0;
       position: absolute;
       top: 50%;
-      left: 0;
+      right: 0; /* تعديل الموقع إلى اليمين */
+      left: unset;
       transform: translateY(-50%);
       height: 4px;
       width: 100%;
@@ -419,7 +557,8 @@
       background-color: #0C294B;
       position: absolute;
       top: 50%;
-      left: 0;
+      right: 0; /* تعديل الموقع إلى اليمين */
+      left: unset;
       transform: translateY(-50%);
       height: 4px;
       width: 0%;
@@ -439,7 +578,26 @@
       border: 3px solid #e0e0e0;
       transition: 0.4s ease;
       font-size: clamp(12px, 3vw, 14px); 
+      
+      /* إضافة الخصائص لإنشاء الدائرة الدوارة */
+      position: relative;
+      z-index: 10;
     }
+    
+    /* الدائرة المتحركة الفضية لدوائر التقدم */
+    .m .circle::before {
+      content: '';
+      position: absolute;
+      width: calc(100% + 8px); 
+      height: calc(100% + 8px);
+      border-radius: 50%;
+      border: 4px solid transparent; 
+      border-top-color: silver;
+      border-right-color: silver;
+      animation: spin 2.5s linear infinite; /* سرعة معتدلة */
+      z-index: -1; 
+    }
+
 
     .m .circle.active {
       border-color: #0C294B;
@@ -455,82 +613,91 @@
       padding: 8px clamp(15px, 4vw, 30px); 
       margin: 5px;
       font-size: clamp(12px, 3vw, 14px); 
-    }
+    }/* --- Counter Rectangles (Ensuring Equal Size and Consistency) --- */
+.rectangle-container {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  max-width: 1200px;
+  width: 90%;
+  height: clamp(120px, 20vw, 150px); 
+  background-color: #2c4766;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  padding: 10px 10px; 
+  box-sizing: border-box;
+  margin: 20px auto;
+}
 
-    /* --- Counter Rectangles (Ensuring Equal Size and Consistency) --- */
-    .rectangle-container {
-      display: flex;
-      justify-content: space-around; 
-      align-items: center;
-      max-width: 95%; 
-      width: 400px; 
-      height: clamp(120px, 20vw, 150px); 
-      background-color: #2c4766;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-      padding: 10px 10px; 
-      box-sizing: border-box;
-      margin: 20px auto;
-    }
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1; 
+  margin: 0 5px; 
+}
 
-    .item-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      flex: 1; 
-      margin: 0 5px; 
-    }
+.circle-container {
+  position: relative;
+  width: clamp(60px, 12vw, 80px); 
+  height: clamp(60px, 12vw, 80px);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+}
 
-    .circle-container {
-      position: relative;
-      width: clamp(60px, 12vw, 80px); 
-      height: clamp(60px, 12vw, 80px);
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 5px;
-    }
+.outer-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#ff5733, #33ff57, #3357ff, #f333ff, #ff5733);
+  animation: rotate 3s linear infinite;
+}
 
-    .outer-circle {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: conic-gradient(#ff5733, #33ff57, #3357ff, #f333ff, #ff5733);
-      animation: rotate 3s linear infinite;
-    }
+.inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 10px); 
+  height: calc(100% - 10px);
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    .inner-circle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: calc(100% - 10px); 
-      height: calc(100% - 10px);
-      background-color: #1a1a1a;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+.counter-number {
+  font-size: clamp(1.5rem, 5vw, 2rem); 
+  font-weight: bold;
+  color: #fff;
+}
 
-    .counter-number {
-      font-size: clamp(1.5rem, 5vw, 2rem); 
-      font-weight: bold;
-      color: #fff;
-    }
+.counter-text {
+  font-size: clamp(0.7rem, 2vw, 0.8rem); 
+  color: #ccc;
+  margin-top: 5px;
+  white-space: nowrap; 
+}
 
-    .counter-text {
-      font-size: clamp(0.7rem, 2vw, 0.8rem); 
-      color: #ccc;
-      margin-top: 5px;
-      white-space: nowrap; 
-    }
+/* حركة الدوران */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
     @keyframes rotate {
       from { transform: rotate(0deg); }
@@ -682,8 +849,10 @@
                   <img src="./Picsart_25-09-08_12-37-29-130.jpg" alt="Profile Photo" class="profile-photo">
               </div>
               <div class="profile-info">
-                  <h1 class="animate-on-load" data-delay="0.4">OmarAbdelTawabSaleh</h1>
-                  <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
+                  <div class="name-bio-wrapper">
+                      <h1 class="animate-on-load" data-delay="0.4">Omar Abdel Tawab Saleh</h1>
+                      <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
+                  </div>
                   <div class="social-links animate-on-load" data-delay="1.2s">
                       
     <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
@@ -744,30 +913,48 @@
       <br>
        "لا تنسى  ذكر الله "
     </h1>
-    <div class="ggg animate-on-load" data-delay="1.6">
+   <div class="ggg animate-on-load" data-delay="1.6">
     <h2>"Anti-cyberbullying guide"<br>
     "دليل مكافحة الابتزاز الإلكتروني"
     </h2>
-    <ul>
-        <li class="animate-on-load" data-delay="1.8">ما هو الابتزاز الإلكتروني وأنواعه المختلفة.</li>
-        <li class="animate-on-load" data-delay="2.0">كيفية التعرف على علامات الابتزاز والتهديد.</li>
-        <li class="animate-on-load" data-delay="2.2">نصائح مهمة للوقاية من الوقوع ضحية للابتزاز.</li>
-        <li class="animate-on-load" data-delay="2.4">خطوات عملية للتعامل مع المبتز وكيفية إنهاء الموقف.</li>
-        <li class="animate-on-load" data-delay="2.6">الجهات الرسمية والشرطية التي يمكن اللجوء إليها للمساعدة.</li>
-        <li class="animate-on-load" data-delay="2.8">أهمية عدم الاستجابة لطلبات المبتز وعدم دفع أي مبالغ مالية.</li>
+    <ul class="rtl-list">
+        <li class="animate-on-load list-item" data-delay="1.8">
+            <span class="main-text">ما هو الابتزاز الإلكتروني وأنواعه المختلفة.</span>
+            <p class="description">يشمل الابتزاز الإلكتروني أنواعًا متعددة مثل التهديد بنشر صور أو معلومات خاصة، وابتزاز الفدية، وهو جريمة تستغل الخوف والضغط المادي.</p>
+        </li>
+        <li class="animate-on-load list-item" data-delay="2.0">
+            <span class="main-text">كيفية التعرف على علامات الابتزاز والتهديد.</span>
+            <p class="description">تتضمن العلامات طلبات غريبة وغير مبررة، وعادة ما تبدأ بتهديد خفي ثم يتصاعد إلى تهديد صريح بضرر مادي أو سمعة.</p>
+        </li>
+        <li class="animate-on-load list-item" data-delay="2.2">
+            <span class="main-text">نصائح مهمة للوقاية من الوقوع ضحية للابتزاز.</span>
+            <p class="description">لا تشارك صورك أو معلوماتك الشخصية مع الغرباء، واستخدم كلمات مرور قوية، ولا تقبل طلبات صداقة من مصادر غير موثوقة.</p>
+        </li>
+        <li class="animate-on-load list-item" data-delay="2.4">
+            <span class="main-text">خطوات عملية للتعامل مع المبتز وكيفية إنهاء الموقف.</span>
+            <p class="description">لا تتجاوب مع رسائل المبتز، قم بتوثيق كل الأدلة (سكرين شوت)، وتغيير جميع كلمات المرور الخاصة بك.</p>
+        </li>
+        <li class="animate-on-load list-item" data-delay="2.6">
+            <span class="main-text">الجهات الرسمية والشرطية التي يمكن اللجوء إليها للمساعدة.</span>
+            <p class="description">توجه فورًا إلى أقرب مركز شرطة أو إدارة مكافحة الجرائم الإلكترونية في بلدك للحصول على الدعم القانوني.</p>
+        </li>
+        <li class="animate-on-load list-item" data-delay="2.8">
+            <span class="main-text">أهمية عدم الاستجابة لطلبات المبتز وعدم دفع أي مبالغ مالية.</span>
+            <p class="description">الدفع لا يوقف الابتزاز بل يشجع المبتز على المزيد. لا تدفع تحت أي ظرف للحفاظ على سلامتك وأموالك.</p>
+        </li>
     </ul>
-    </div> 
+</div>
 
 
 <div class="carousel-section animate-on-load" data-delay="3.0">
     <h2>My portfolio ;</h2>
     <div class="m">
       <div class="progress" id="progress"></div>
-      <div class="circle active">1</div> 
-      <div class="circle">2</div>
-      <div class="circle">3</div>
+      <div class="circle active">5</div> 
       <div class="circle">4</div>
-      <div class="circle">5</div>
+      <div class="circle">3</div>
+      <div class="circle">2</div>
+      <div class="circle">1</div>
     </div>
 
     
@@ -823,138 +1010,150 @@
 </div>
 
   </div> <script>
+  
+  // دالة تطبيق الظهور التدريجي
+  function applyEntranceAnimation() {
+      const animatedElements = document.querySelectorAll('.animate-on-load');
+      animatedElements.forEach((element) => {
+          const delay = parseFloat(element.getAttribute('data-delay'));
+          // تطبيق التأخير قبل إضافة كلاس 'visible'
+          setTimeout(() => {
+              element.classList.add('visible');
+          }, delay * 1000); 
+      });
+  }
+
   setTimeout(function() {
-  const loadingPage = document.getElementById('loading-page');
-  const mainContent = document.getElementById('main-content');
-  
-  loadingPage.style.display = 'none';
-  mainContent.style.display = 'block';
+      const loadingPage = document.getElementById('loading-page');
+      const mainContent = document.getElementById('main-content');
+      
+      loadingPage.classList.add('hidden'); // إخفاء صفحة التحميل
+      
+      setTimeout(() => {
+          mainContent.style.display = 'block';
+          mainContent.classList.add('visible');
+          
+          // استدعاء دالة تطبيق الظهور التدريجي
+          applyEntranceAnimation();
 
-  setTimeout(() => {
-    mainContent.classList.add('visible');
+          // **كود العدادات**
+          function animateCounter(counterId, targetNumber, duration) {
+              const counter = document.getElementById(counterId);
+              let startTimestamp = null;
 
-    // Get all elements with the new animation class
-    const animatedElements = document.querySelectorAll('.animate-on-load');
+              const animate = (timestamp) => {
+                  if (!startTimestamp) startTimestamp = timestamp;
+                  const progress = timestamp - startTimestamp;
+                  const percentage = Math.min(progress / duration, 1);
+                  const currentCount = Math.floor(percentage * targetNumber);
 
-    // Loop through each element and apply the animation with a delay
-    animatedElements.forEach((element) => {
-        const delay = parseFloat(element.getAttribute('data-delay'));
-        element.style.transitionDelay = delay + 's';
-        element.classList.add('visible');
+                  counter.textContent = currentCount;
+
+                  if (percentage < 1) {
+                      requestAnimationFrame(animate);
+                  }
+              };
+              requestAnimationFrame(animate);
+          }
+
+          animateCounter('counter1', 97, 2000);
+          animateCounter('counter2', 50, 2500);
+          animateCounter('counter3', 120, 3000);
+
+      }, 1000); // إظهار المحتوى الرئيسي بعد ثانية واحدة من بدء الإخفاء
+  }, 5000);
+
+  // كود دوائر الأرقام 1, 2, 3
+  const circles = document.querySelectorAll('.box .circle'); 
+  let counter = 1;
+
+  function updateCounter() {
+      if (circles.length >= 3) {
+        circles[0].textContent = counter;
+        circles[1].textContent = counter + 1;
+        circles[2].textContent = counter + 2;
+        counter = (counter % 98) + 1;
+      }
+  }
+
+  setInterval(updateCounter, 1000);
+
+  // JavaScript for the integrated Carousel & Progress
+  const slides = document.querySelectorAll("[data-slide]");
+  const progress = document.getElementById("progress");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const carouselCircles = document.querySelectorAll(".carousel-section .m .circle"); 
+
+  let currSlide = 0;
+  let maxSlide = slides.length - 1;
+
+  const updateCarousel = (number = 0) => {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${(index - number) * 100}%)`;
+    });
+  };
+
+  const updateProgress = () => {
+    // تفعيل الدوائر بناءً على الشريحة الحالية (مع عكس الترتيب لـ RTL)
+    carouselCircles.forEach((circle, index) => {
+      if (index === maxSlide - currSlide) { 
+        circle.classList.add("active");
+      } else {
+        circle.classList.remove("active");
+      }
     });
     
-    // Animate the social links specifically
-    const socialLinks = document.querySelectorAll('.social-links a');
-    socialLinks.forEach((link, index) => {
-        setTimeout(() => {
-            link.style.opacity = '1';
-        }, 500 + index * 200);
-    });
+    // حساب شريط التقدم (Progress) بناءً على الاتجاه العكسي
+    progress.style.width = (currSlide / (carouselCircles.length - 1)) * 100 + "%";
 
-    // **كود العدادات**
-    function animateCounter(counterId, targetNumber, duration) {
-        const counter = document.getElementById(counterId);
-        let startTimestamp = null;
-
-        const animate = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = timestamp - startTimestamp;
-            const percentage = Math.min(progress / duration, 1);
-            const currentCount = Math.floor(percentage * targetNumber);
-
-            counter.textContent = currentCount;
-
-            if (percentage < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-        requestAnimationFrame(animate);
-    }
-
-    animateCounter('counter1', 97, 2000);
-    animateCounter('counter2', 50, 2500);
-    animateCounter('counter3', 120, 3000);
-
-  }, 50);
-}, 5000); // 5000 milliseconds = 5 seconds
-
-// كود دوائر الأرقام 1, 2, 3
-const circles = document.querySelectorAll('.box .circle'); 
-let counter = 1;
-
-function updateCounter() {
-    if (circles.length >= 3) {
-      circles[0].textContent = counter;
-      circles[1].textContent = counter + 1;
-      circles[2].textContent = counter + 2;
-      counter = (counter % 98) + 1;
-    }
-}
-
-setInterval(updateCounter, 1000);
-
-// JavaScript for the integrated Carousel & Progress
-const slides = document.querySelectorAll("[data-slide]");
-const progress = document.getElementById("progress");
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
-const carouselCircles = document.querySelectorAll(".carousel-section .m .circle"); 
-
-let currSlide = 0;
-let maxSlide = slides.length - 1;
-
-let currentActive = 1;
-
-const updateCarousel = (number = 0) => {
-  slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(${(index - number) * 100}%)`;
-  });
-};
-
-const updateProgress = () => {
-  // تفعيل الدوائر بناءً على الشريحة الحالية
-  carouselCircles.forEach((circle, index) => {
-    if (index === currSlide) {
-      circle.classList.add("active");
+    // تفعيل وإلغاء تفعيل الأزرار
+    if (currSlide === 0) {
+      prev.disabled = true;
+    } else if (currSlide === maxSlide) {
+      next.disabled = true;
     } else {
-      circle.classList.remove("active");
+      prev.disabled = false;
+      next.disabled = false;
+    }
+  };
+
+  next.addEventListener("click", () => {
+    if (currSlide < maxSlide) {
+      currSlide++;
+      updateCarousel(currSlide);
+      updateProgress();
     }
   });
-  
-  progress.style.width = (currSlide / (carouselCircles.length - 1)) * 100 + "%";
 
-  // تفعيل وإلغاء تفعيل الأزرار
-  if (currSlide === 0) {
-    prev.disabled = true;
-  } else if (currSlide === maxSlide) {
-    next.disabled = true;
-  } else {
-    prev.disabled = false;
-    next.disabled = false;
-  }
-};
+  prev.addEventListener("click", () => {
+    if (currSlide > 0) {
+      currSlide--;
+      updateCarousel(currSlide);
+      updateProgress();
+    }
+  });
 
-next.addEventListener("click", () => {
-  if (currSlide < maxSlide) {
-    currSlide++;
-    updateCarousel(currSlide);
-    updateProgress();
-  }
-});
+  // تهيئة عند تحميل الصفحة
+  updateCarousel();
+  updateProgress();
 
-prev.addEventListener("click", () => {
-  if (currSlide > 0) {
-    currSlide--;
-    updateCarousel(currSlide);
-    updateProgress();
-  }
-});
+  // JavaScript لوظيفة النقر على عناصر القائمة (مكافحة الابتزاز)
+  document.addEventListener('DOMContentLoaded', () => {
+      const listItems = document.querySelectorAll('.list-item');
 
-// تهيئة عند تحميل الصفحة
-updateCarousel();
-updateProgress();
+      listItems.forEach(item => {
+          item.addEventListener('click', () => {
+              listItems.forEach(otherItem => {
+                  if (otherItem !== item) {
+                      otherItem.classList.remove('show-description');
+                  }
+              });
+              item.classList.toggle('show-description');
+          });
+      });
+  });
 
-    
   </script>
   
 </body>
