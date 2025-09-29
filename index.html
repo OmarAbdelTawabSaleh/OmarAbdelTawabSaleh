@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Omar Abdel Tawab Saleh</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Omar Abdel Tawab Saleh Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        /* CSS لتنسيق وتثبيت الزر */
+        
+        /* تعريف الألوان المتحركة */
+        @keyframes rainbow {
+            0% { background-color: #ff0000; } /* أحمر */
+            16% { background-color: #ff7f00; } /* برتقالي */
+            33% { background-color: #ffff00; } /* أصفر */
+            50% { background-color: #00ff00; } /* أخضر */
+            66% { background-color: #0000ff; } /* أزرق */
+            83% { background-color: #4b0082; } /* نيلي */
+            100% { background-color: #9400d3; } /* بنفسجي */
+        }
+
+        /* تنسيق الزر وتثبيته في أسفل اليمين */
+        .whatsapp-fixed-btn {
+            /* التثبيت في أسفل اليمين */
+            position: fixed;
+            bottom: 20px; /* مسافة من الأسفل */
+            right: 20px; /* مسافة من اليمين */
+            z-index: 1000; /* للتأكد من ظهوره فوق العناصر الأخرى */
+            
+            /* التعديل 1: تصغير حجم الزر */
+            background-color: #2c4766; 
+            color: white;
+            padding: 10px 20px; /* تم تقليل الحشوة */
+            border: none;
+            border-radius: 8px;
+            font-size: 16px; /* تم تقليل حجم الخط */
+            font-weight: bold;
+            text-decoration: none; 
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s, opacity 0.5s ease-in-out; /* إضافة انتقال لـ opacity */
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            
+            /* التعديل 2: إخفاء الزر مبدئياً */
+            opacity: 0;
+            pointer-events: none; /* لمنع النقر عليه وهو مخفي */
+        }
+
+        /* عند مرور مؤشر الفأرة (Hover) */
+        .whatsapp-fixed-btn:hover {
+            transform: scale(1.05); 
+        }
+        
+        /* الكلاس الذي يتم إضافته عند الضغط لتشغيل الألوان المتحركة */
+        .whatsapp-fixed-btn.animate-colors {
+            animation: rainbow 1s linear infinite; 
+            color: black; 
+        }
+
+        /* الكلاس الجديد لإظهار الزر بعد التحميل */
+        .whatsapp-fixed-btn.show {
+            opacity: 1;
+            pointer-events: auto; /* تمكين النقر عليه */
+        }
+        
+        /* --- باقي تنسيقات الصفحة --- */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
 
     /* --- General Body & Font Styles (Optimized for Responsiveness) --- */
@@ -84,8 +145,17 @@
       font-size: 1em;
       margin-top: 20px;
     }
+/* --- إزالة التوهج وضمان التجاوب الكامل للخلفية --- */
+body, html {
+  height: 100%; /* ضمان تغطية كاملة لارتفاع الشاشة */
+  width: 100%;  /* ضمان تغطية كاملة لعرض الشاشة */
+  margin: 0;    /* إزالة الهوامش الافتراضية */
+  padding: 0;   /* إزالة الحشوات الافتراضية */
+  box-sizing: border-box; /* التأكد من أن الحدود والحشوات تُحسب ضمن العرض/الارتفاع */
+}
 
-    /* --- Main Content & Gradual Animations --- */
+
+/* --- Main Content & Gradual Animations --- */
     #main-content {
       display: none;
       opacity: 0;
@@ -181,7 +251,6 @@
   font-size: 18px; 
 }
 
-
     /* --- تعديل استعلام الوسائط للحفاظ على اتجاه اليمين --- */
     @media (max-width: 600px) {
         .profile-header {
@@ -256,23 +325,21 @@
     }
 
     /* ******************************************************
-     * التعديل 1: تجاوب وتوسيط "Welcome To My Website"
+     * "Welcome To My Website"
      ****************************************************** */
     #vx {
-      color: white;/* تغيير لون النص ليتناسب مع الخلفية البيضاء */
-      
-      /* لجعل العنصر قابلاً للتوسيط داخل div أو body */
+      color: white;
       display: block; 
-      width: fit-content; /* عرض بحجم المحتوى فقط */
+      width: fit-content; 
       text-align: center;
-      margin: 20px auto; /* التوسيط الأفقي */
+      margin: 20px auto; 
       padding: 5px 10px;
       border-radius: 5px;
       text-shadow: none;
       font-size: clamp(1.2em, 4vw, 1.6em); 
     }
     
-    /* --- Box for Circles (Ensuring Equal Size and Consistency) --- */
+    /* --- Box for Circles --- */
 .box {
   width: 90%; 
   margin: 20px auto;
@@ -333,167 +400,26 @@
       text-align: center;
       font-size: clamp(1em, 3vw, 1.2em); 
       text-shadow: 0 1px 10px silver;
-      margin: 20px 0;
+      /* التعديل الجديد: تقليل الهامش السفلي للنص (لا تنسى ذكر الله) */
+      margin: 20px 0 5px 0;
     }
     
-    /* ******************************************************
-     * التعديل المطلوب: تعديل عرض الحاوية .ggg 
-     * ليتناسب مع الحاويات الأخرى (900px)
-     ****************************************************** */
-    .ggg {
-      max-width: 95%; 
-      width: 900px; 
-      margin: 20px auto;
-      background: transparent; /* إخفاء الخلفية */
-      padding: 20px 40px;
-      border-radius: 8px;
-      box-shadow: none; /* إزالة الظل */
-    }
-    
-    @media (max-width: 600px) {
-        .ggg {
-            padding: 20px;
-        }
-    }
-    
-    /* ******************************************************
-     * التعديل 1: تجاوب وتوسيط "دليل مكافحة الابتزاز الإلكتروني"
-     * التعديل المطلوب: تغيير الخلفية البيضاء إلى لون خلفية الحاوية (#2c4766)
-     ****************************************************** */
-    .ggg h2 {
-      color: white;
-      background-color: #2c4766; 
-      display: block; 
-      width: 90%; /* عرض ليتناسب مع حاويات الدوائر */
-      max-width: 800px; /* ضمان عدم التمدد أكثر من اللازم */
-      padding: 10px 15px; /* تباعد يتناسب مع حجم الدائرة */
-      text-shadow: none;
-      border-radius: 8px; /* تدوير الحواف ليصبح أكثر شبهاً بالصناديق */
-      text-align: center;
-      font-size: clamp(18px, 4vw, 22px);
-      margin: 20px auto; /* التوسيط الأفقي */
-    }
-    
-/* --- تأثيرات الدائرة المتحركة وواجهة النص (القائمة) --- */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.rtl-list {
-    direction: rtl; 
-    text-align: right; 
-}
-
-li {
-    padding: 15px 50px 15px 15px; 
-    /* ******************************************************
-     * التعديل 2: إزالة الخطوط الفاصلة
-     ****************************************************** */
-    border-bottom: none; 
-    position: relative;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-out;
-    font-size: clamp(14px, 3vw, 18px); 
-    /* ******************************************************
-     * التعديل 2: جعل الخط سميك قليلاً
-     ****************************************************** */
-    font-weight: 500; 
-    color: white;
-    overflow: hidden;
-    display: flex; /* لضمان المحاذاة المتساوية */
-    align-items: center; /* المحاذاة في المنتصف عمودياً */
-}
-
-li:last-child {
-    /*border-bottom: none; *//* لم يعد ضرورياً بعد إزالة border-bottom من li */
-    padding-bottom: 0;
-}
-
-li.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.main-text {
-    display: inline-block;
-    max-width: 100%;
-}
-
-
-/* الدائرة المتحركة (على اليمين) */
-li::before {
-    content: '';
-    position: absolute;
-    right: 10px;
-    left: unset;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg); 
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 4px solid black; 
-    border-top-color: var(--circle-color); 
-    border-right-color: var(--circle-color);
-    z-index: 10;
-    /* ******************************************************
-     * التعديل 3: إضافة لون أسود شفاف لمركز الدائرة
-     ****************************************************** */
-    background: white;
-    animation: spin 1s linear infinite; 
-}
-
-/* تحديد ألوان الإطار المتحرك لكل عنصر */
-.rtl-list li:nth-child(1) { --circle-color: #ff5733; }
-.rtl-list li:nth-child(2) { --circle-color: #33ff57; }
-.rtl-list li:nth-child(3) { --circle-color: #3357ff; }
-.rtl-list li:nth-child(4) { --circle-color: #f333ff; }
-.rtl-list li:nth-child(5) { --circle-color: #ffcc00; }
-.rtl-list li:nth-child(6) { --circle-color: #00ffff; }
-
-
-/* تنسيق الشرح المخفي */
-.description {
-    display: none; 
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    font-size: clamp(12px, 2.5vw, 14px);
-    color: #eee;
-    z-index: 20;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: flex-end; /* المحاذاة إلى اليمين */
-    text-align: right;
-    direction: rtl;
-}
-
-li.show-description .main-text {
-    opacity: 0;
-}
-
-li.show-description .description {
-    display: flex;
-}
-
-li.show-description::before {
-    display: none;
-}
-
 /* --- Carousel & Progress Styles (Responsive & RTL) --- */
     .carousel-section {
-      margin: 40px auto;
-      max-width: 95%; 
-      width: 900px; 
+      /* التعديل الجديد: تقليل الهامش العلوي للقسم ليقترب من النص */
+      margin: 10px auto 40px auto;
+      
+      /* ******************************************************
+       * تم توحيد العرض إلى 90% (من الطلب السابق)
+       ****************************************************** */
+      max-width: 90%; 
+      width: 90%; 
+      
       padding: 20px;
-      background: #2c4766;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* تم إزالة الخلفية */
+      background: transparent;
+      
+      box-shadow: none; 
     }
 
     .carousel-section h2 {
@@ -506,12 +432,19 @@ li.show-description::before {
 
     .carousel-wrapper {
       width: 100%;
-      aspect-ratio: 16/9;
+      
+      /* تم تصغير ارتفاع المعرض (جعله أقصر) */
+      aspect-ratio: 16/7; 
+      
       overflow: hidden;
       margin: 2rem auto;
       position: relative;
-      background-color: #f6f7fb;
+      
+      /* تم تغيير الخلفية لتبدو جزءاً من التصميم العام */
+      background-color: #2c4766; 
+      
       border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* إضافة ظل لغلاف الصور فقط */
     }
 
     .slide {
@@ -536,8 +469,10 @@ li.show-description::before {
       justify-content: space-between;
       position: relative;
       margin: 0 auto 30px auto; 
-      max-width: 100%;
-      width: clamp(250px, 50vw, 350px); 
+      /* **التعديل الجديد: جعل دوائر التقدم متجاوبة بالكامل** */
+      max-width: 95%; 
+      /* تم تعديل العرض ليتناسق مع عرض الأزرار الجديدة */
+      width: clamp(350px, 60vw, 450px); 
     }
 
     .m::before {
@@ -567,8 +502,9 @@ li.show-description::before {
     }
 
     .m .circle {
-      height: clamp(20px, 5vw, 30px); 
-      width: clamp(20px, 5vw, 30px);
+      /* **التعديل هنا: زيادة حجم الدوائر لتكون عريضة وقريبة من عرض الصور** */
+      height: clamp(50px, 10vw, 60px); 
+      width: clamp(50px, 10vw, 60px); 
       background-color: #fff;
       color: #999;
       border-radius: 50%;
@@ -577,21 +513,23 @@ li.show-description::before {
       justify-content: center;
       border: 3px solid #e0e0e0;
       transition: 0.4s ease;
-      font-size: clamp(12px, 3vw, 14px); 
+      font-size: clamp(14px, 3vw, 16px); 
+      font-weight: bold; 
       
       /* إضافة الخصائص لإنشاء الدائرة الدوارة */
       position: relative;
       z-index: 10;
     }
     
-    /* الدائرة المتحركة الفضية لدوائر التقدم */
+    /* الدائرة المتحركة الفضية لدوائر التقدم (زيادة العرض للتناسق) */
     .m .circle::before {
       content: '';
       position: absolute;
-      width: calc(100% + 8px); 
-      height: calc(100% + 8px);
+      /* زيادة حجم الإطار ليتناسب مع حجم الدائرة الجديدة */
+      width: calc(100% + 12px); 
+      height: calc(100% + 12px);
       border-radius: 50%;
-      border: 4px solid transparent; 
+      border: 6px solid transparent; /* زيادة سماكة الحدود */
       border-top-color: silver;
       border-right-color: silver;
       animation: spin 2.5s linear infinite; /* سرعة معتدلة */
@@ -601,25 +539,34 @@ li.show-description::before {
 
     .m .circle.active {
       border-color: #0C294B;
+      color: #0C294B; /* لجعل النص أزرق عند التفعيل */
     }
 
     .btn {
       background-color: #0C294B;
       color: #fff;
-      border: 0;
+      border: 2px solid silver; /* **التعديل هنا: إضافة إطار أبيض/فضي** */
       border-radius: 6px;
       cursor: pointer;
       font-family: inherit;
-      padding: 8px clamp(15px, 4vw, 30px); 
+      padding: 10px clamp(30px, 6vw, 40px); /* **التعديل هنا: زيادة العرض** */
       margin: 5px;
-      font-size: clamp(12px, 3vw, 14px); 
-    }/* --- Counter Rectangles (Ensuring Equal Size and Consistency) --- */
+      font-size: clamp(14px, 3vw, 16px); /* **التعديل هنا: زيادة حجم الخط** */
+      transition: 0.3s ease;
+    }
+    
+    .btn:hover:enabled {
+        background-color: #1a416e;
+        border-color: white;
+    }
+    
+/* --- Counter Rectangles --- */
 .rectangle-container {
   display: flex;
   justify-content: space-around; 
   align-items: center;
   max-width: 1200px;
-  width: 90%;
+  width: 90%; /* هذا هو العرض الذي تريد أن يماثله المعرض */
   height: clamp(120px, 20vw, 150px); 
   background-color: #2c4766;
   border-radius: 20px;
@@ -697,22 +644,17 @@ li.show-description::before {
     transform: rotate(360deg);
   }
 }
-
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
     
      /* New container with the requested styles (Responsive) */
         .main-content-wrapper {
+            /* **التعديل هنا: إزالة الخلفية وجعل العرض يتجاوب مع أي شاشة** */
             max-width: 95%; 
-            width: 380px; 
+            width: 500px; /* تحديد عرض ابتدائي متجاوب */
             margin: 40px auto;
-            background-color: #2c4766;
+            background-color: transparent; /* تم حذف الخلفية */
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+            box-shadow: none; /* تم حذف الظل الخارجي */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -725,7 +667,7 @@ li.show-description::before {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Rotating color animation for background and borders */
+        /* Rotating color animation for border only */
         @keyframes border-glow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -736,7 +678,7 @@ li.show-description::before {
         .rectangle {
             width: 100%; 
             height: clamp(80px, 15vw, 100px); 
-            background-color: #21262d;
+            background-color: #21262d; /* الخلفية الداخلية للزر */
             border-radius: 8px;
             display: flex;
             justify-content: center;
@@ -853,7 +795,7 @@ li.show-description::before {
                       <h1 class="animate-on-load" data-delay="0.4">Omar Abdel Tawab Saleh</h1>
                       <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
                   </div>
-                  <div class="social-links animate-on-load" data-delay="1.2s">
+                  <div class="social-links animate-on-load" data-delay="0.8">
                       
     <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
 
@@ -868,10 +810,11 @@ li.show-description::before {
       </div>
   
 
-  <h1 id="vx" class="animate-on-load" data-delay="0.8">
+  <h1 id="vx" class="animate-on-load" data-delay="1.0">
     "Welcome To My Website" 
   </h1>
-  <div class="rectangle-container animate-on-load" data-delay="1.0">
+  
+  <div class="rectangle-container animate-on-load" data-delay="1.2">
         <div class="item-container">
             <div class="circle-container">
                 <div class="outer-circle"></div>
@@ -903,50 +846,19 @@ li.show-description::before {
         </div>
     </div>
 
-  <div class="box animate-on-load" data-delay="1.2">
+  <div class="box animate-on-load" data-delay="1.4">
     <div class="circle circle-1">1</div>
     <div class="circle circle-2">2</div>
     <div class="circle circle-3">3</div>
   </div>
-    <h1 id="sv" class="animate-on-load" data-delay="1.4">
+    <h1 id="sv" class="animate-on-load" data-delay="1.6">
       "Don't forget to mention Allah"
       <br>
        "لا تنسى  ذكر الله "
     </h1>
-   <div class="ggg animate-on-load" data-delay="1.6">
-    <h2>"Anti-cyberbullying guide"<br>
-    "دليل مكافحة الابتزاز الإلكتروني"
-    </h2>
-    <ul class="rtl-list">
-        <li class="animate-on-load list-item" data-delay="1.8">
-            <span class="main-text">ما هو الابتزاز الإلكتروني وأنواعه المختلفة.</span>
-            <p class="description">يشمل الابتزاز الإلكتروني أنواعًا متعددة مثل التهديد بنشر صور أو معلومات خاصة، وابتزاز الفدية، وهو جريمة تستغل الخوف والضغط المادي.</p>
-        </li>
-        <li class="animate-on-load list-item" data-delay="2.0">
-            <span class="main-text">كيفية التعرف على علامات الابتزاز والتهديد.</span>
-            <p class="description">تتضمن العلامات طلبات غريبة وغير مبررة، وعادة ما تبدأ بتهديد خفي ثم يتصاعد إلى تهديد صريح بضرر مادي أو سمعة.</p>
-        </li>
-        <li class="animate-on-load list-item" data-delay="2.2">
-            <span class="main-text">نصائح مهمة للوقاية من الوقوع ضحية للابتزاز.</span>
-            <p class="description">لا تشارك صورك أو معلوماتك الشخصية مع الغرباء، واستخدم كلمات مرور قوية، ولا تقبل طلبات صداقة من مصادر غير موثوقة.</p>
-        </li>
-        <li class="animate-on-load list-item" data-delay="2.4">
-            <span class="main-text">خطوات عملية للتعامل مع المبتز وكيفية إنهاء الموقف.</span>
-            <p class="description">لا تتجاوب مع رسائل المبتز، قم بتوثيق كل الأدلة (سكرين شوت)، وتغيير جميع كلمات المرور الخاصة بك.</p>
-        </li>
-        <li class="animate-on-load list-item" data-delay="2.6">
-            <span class="main-text">الجهات الرسمية والشرطية التي يمكن اللجوء إليها للمساعدة.</span>
-            <p class="description">توجه فورًا إلى أقرب مركز شرطة أو إدارة مكافحة الجرائم الإلكترونية في بلدك للحصول على الدعم القانوني.</p>
-        </li>
-        <li class="animate-on-load list-item" data-delay="2.8">
-            <span class="main-text">أهمية عدم الاستجابة لطلبات المبتز وعدم دفع أي مبالغ مالية.</span>
-            <p class="description">الدفع لا يوقف الابتزاز بل يشجع المبتز على المزيد. لا تدفع تحت أي ظرف للحفاظ على سلامتك وأموالك.</p>
-        </li>
-    </ul>
-</div>
+   
 
-
-<div class="carousel-section animate-on-load" data-delay="3.0">
+<div class="carousel-section animate-on-load" data-delay="1.8">
     <h2>My portfolio ;</h2>
     <div class="m">
       <div class="progress" id="progress"></div>
@@ -980,14 +892,14 @@ li.show-description::before {
       <button class="btn" id="prev" disabled>السابق</button>
       <button class="btn" id="next">التالي</button>
     </div>
-<div class="social-links animate-on-load" data-delay="3.2">
+<div class="social-links animate-on-load" data-delay="2.0">
   <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
   <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
   <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
   <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
 </div>
 </div>
-<div class="main-content-wrapper animate-on-load" data-delay="3.4">
+<div class="main-content-wrapper animate-on-load" data-delay="2.2">
         <a href="https://www.facebook.com/share/p/1CjA55hsBR/" class="rectangle">
             "متنساش تقييم تعاملنا معاك" </a>
 
@@ -1009,14 +921,27 @@ li.show-description::before {
     <span>&copy;</span> All rights reserved, Omar Abd El-Tawab Saleh
 </div>
 
-  </div> <script>
+  </div> 
+
+  <a 
+        href="https://wa.me/201202763155" 
+        class="whatsapp-fixed-btn"
+        id="whatsappButton"
+        target="_blank" 
+        rel="noopener noreferrer"
+        onclick="startAnimation(event)"
+    >
+        WhatsApp
+    </a>
+
+<script>
   
   // دالة تطبيق الظهور التدريجي
   function applyEntranceAnimation() {
       const animatedElements = document.querySelectorAll('.animate-on-load');
       animatedElements.forEach((element) => {
-          const delay = parseFloat(element.getAttribute('data-delay'));
-          // تطبيق التأخير قبل إضافة كلاس 'visible'
+          const delay = parseFloat(element.getAttribute('data-delay')); 
+          
           setTimeout(() => {
               element.classList.add('visible');
           }, delay * 1000); 
@@ -1026,17 +951,20 @@ li.show-description::before {
   setTimeout(function() {
       const loadingPage = document.getElementById('loading-page');
       const mainContent = document.getElementById('main-content');
-      
+      const whatsappButton = document.getElementById('whatsappButton'); 
+
       loadingPage.classList.add('hidden'); // إخفاء صفحة التحميل
       
       setTimeout(() => {
           mainContent.style.display = 'block';
           mainContent.classList.add('visible');
           
+          whatsappButton.classList.add('show'); 
+
           // استدعاء دالة تطبيق الظهور التدريجي
           applyEntranceAnimation();
 
-          // **كود العدادات**
+          // **كود عدادات المستطيلات**
           function animateCounter(counterId, targetNumber, duration) {
               const counter = document.getElementById(counterId);
               let startTimestamp = null;
@@ -1072,7 +1000,8 @@ li.show-description::before {
         circles[0].textContent = counter;
         circles[1].textContent = counter + 1;
         circles[2].textContent = counter + 2;
-        counter = (counter % 98) + 1;
+        // يتم تدوير الأرقام كل ثانية
+        counter = (counter % 98) + 1; 
       }
   }
 
@@ -1138,21 +1067,21 @@ li.show-description::before {
   updateCarousel();
   updateProgress();
 
-  // JavaScript لوظيفة النقر على عناصر القائمة (مكافحة الابتزاز)
-  document.addEventListener('DOMContentLoaded', () => {
-      const listItems = document.querySelectorAll('.list-item');
-
-      listItems.forEach(item => {
-          item.addEventListener('click', () => {
-              listItems.forEach(otherItem => {
-                  if (otherItem !== item) {
-                      otherItem.classList.remove('show-description');
-                  }
-              });
-              item.classList.toggle('show-description');
-          });
-      });
-  });
+    // JavaScript لزر الواتساب
+    function startAnimation(event) {
+        const button = document.getElementById('whatsappButton');
+        
+        // 1. إضافة الكلاس لتشغيل حركة الألوان (Animation)
+        button.classList.add('animate-colors');
+        
+        // 2. منع الانتقال الفوري للرابط (حتى تظهر الحركة لثانية)
+        event.preventDefault(); 
+        
+        // 3. تأخير الانتقال الفعلي للرابط
+        setTimeout(() => {
+            window.location.href = button.href;
+        }, 1000); // 1000 ميلي ثانية = 1 ثانية
+    }
 
   </script>
   
