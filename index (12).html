@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <head>
+        <meta property="og:image" content="https://www2.0zz0.com/2025/10/07/08/566191129.jpg">
+
+        <link rel="icon" type="image/png" href="./Picsart_25-07-21_03-48-09-537.jpg" sizes="32x32">
+
+    
+    <meta property="og:title" content="Omar Abdel Tawab Saleh"
+    <meta property="og:description" content="موقع شخصي خاص ب عمر عبدالتواب صالح">
+    
+
+
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Omar Abdel Tawab Saleh </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+ <style>
+        /* ------------------------------------------------------------------ */
+        /* --- 1. WhatsApp Button & Rainbow Animation --- */
+        /* ------------------------------------------------------------------ */
+        @keyframes rainbow {
+            0% { background-color: #ff0000; }
+            16% { background-color: #ff7f00; }
+            33% { background-color: #ffff00; }
+            50% { background-color: #00ff00; }
+            66% { background-color: #0000ff; }
+            83% { background-color: #4b0082; }
+            100% { background-color: #9400d3; }
+        }
+
+        .whatsapp-fixed-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #2c4766; 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none; 
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s, opacity 0.5s ease-in-out;
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .whatsapp-fixed-btn:hover {
+            transform: scale(1.05); 
+        }
+        
+        .whatsapp-fixed-btn.animate-colors {
+            animation: rainbow 1s linear infinite; 
+            color: black; 
+        }
+
+        .whatsapp-fixed-btn.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* --- 2. General Body & Font Styles (Original) --- */
+        /* ------------------------------------------------------------------ */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #1f293a; /* الخلفية الافتراضية الداكنة */
+            color: #fff;
+            /* التعديل لمنع التمرير الأفقي: تم تصحيح القيمة وإبقائها */
+            overflow-x: hidden; 
+            transition: background-color 0.5s, color 0.5s; /* للانتقال السلس */
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* --- 3. Dark/Light Mode Styles (مدمج ومعدّل) --- */
+        /* ------------------------------------------------------------------ */
+        
+        /* أنماط الوضع النهاري (Light Mode) - تعديل الخلفية والألوان الرئيسية */
+        body.light-mode {
+            background-color: #f0f0f0; /* خلفية فاتحة */
+            color: #333; /* نص داكن */
+        }
+        
+        body.light-mode .profile-container, 
+        body.light-mode .carousel-wrapper, 
+        body.light-mode .rectangle-container,
+        body.light-mode .box {
+            background-color: #fff; /* خلفيات فاتحة للأقسام */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode h1, 
+        body.light-mode h2,
+        body.light-mode .welcome-text {
+            color: #333 !important; /* النص داكن */
+            text-shadow: none;
+        }
+        
+        body.light-mode .bio,
+        body.light-mode #sv,
+        body.light-mode .copyright {
+            color: #666 !important;
+            text-shadow: none;
+        }
+
+        /* تعديل زر الواتساب في الوضع الفاتح */
+        body.light-mode .whatsapp-fixed-btn {
+            background-color: #25D366; /* لون واتساب الأخضر */
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* تعديل زر Next/Prev في الوضع الفاتح */
+        body.light-mode .btn {
+            background-color: #007bff; /* أزرق أساسي فاتح */
+            color: white;
+            border-color: #ddd;
+        }
+        
+        /* تعديل لون زر التبديل في الوضع الفاتح */
+        body.light-mode .switch input:checked + .slider {
+            background-color: white;
+            /*
+            لون المسار في الوضع الفاتح */
+            color: black; 
+            box-shadow:0 0 10px silver;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* --- 4. Toggle Switch Styles (تعديل الموقع لليمين وتغيير الشكل للنص) --- */
+        /* ------------------------------------------------------------------ */
+        .switch-container {
+            position: fixed;
+            top: 20px;
+            right: 20px; 
+            left: unset;  
+            display: inline-block;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 140px; /* توسيع العرض لاستيعاب النص */
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow :0 0 10px silver;
+            background-color:#2c4766; /* لون المسار في الوضع الداكن الافتراضي (الوضع الفاتح) */
+            transition: 0.4s;
+            border-radius: 34px;
+            /* أنماط النص */
+            color: white;
+            /*
+            ; لون النص في الوضع الافتراضي */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px; /* تصغير الخط لاستيعاب النص */
+            font-weight: bold;
+            padding: 0 10px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        /* عند تفعيل مربّع الاختيار (الوضع النهاري - فاتح) */
+        input:checked + .slider {
+            background-color: #0D345C; /* لون المسار في الوضع الليلي */
+            color: #fff; /* لون النص في الوضع الليلي */
+        }
+        
+        /* إزالة الدائرة المتحركة */
+        .slider:before {
+            content: none;
+        }
+
+
+        /* ------------------------------------------------------------------ */
+        /* --- 5. Loading Page & Main Content (Original) --- */
+        /* ------------------------------------------------------------------ */
+        #loading-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #1f293a;
+            z-index: 9999; /* زيادة الـ z-index */
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        #loading-page.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container span {
+            position: absolute;
+            left: 0;
+            width: 25px;
+            height: 5px;
+            background: #2c4766;
+            border-radius: 8px;
+            transform-origin: 100px;
+            transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+            animation: animateBlink 3s linear infinite;
+            animation-delay: calc(var(--i) * (3s / 50));
+        }
+
+        @keyframes animateBlink {
+            0% { background: #0ef; }
+            25% { background: #2c4766; }
+        }
+
+        .welcome-text {
+            color: #0ef;
+            font-size: clamp(1.5em, 5vw, 1.9em); 
+            text-align: center;
+            position: absolute;
+            z-index: 10;
+            text-shadow: 0 0 10px silver;
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+            display: block;
+        }
+
+        .animate-on-load {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        .animate-on-load.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* --- 6. Profile & Social Links (مع تعديل نص سلفي) --- */
+        /* ------------------------------------------------------------------ */
+        .profile-container {
+            max-width: 95%; 
+            width: 900px; 
+            margin: 20px auto;
+            background-color:#2c4766;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            overflow: hidden;
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: clamp(150px, 25vw, 200px); 
+            object-fit: cover;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: flex-end;
+            padding: 0 20px 20px 20px;
+            transform: translateY(-20px);
+        }
+
+        .profile-photo-wrapper {
+            width: clamp(120px, 20vw, 160px); 
+            height: clamp(120px, 20vw, 160px);
+            border-radius: 50%;
+            border: 4px solid #fff;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(calc(-50% - 80px)); 
+            box-shadow: 0 0 10px silver;
+            transition: box-shadow 0.5s ease-in-out;
+            flex-shrink: 0; 
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            margin-right: 20px; 
+            flex-grow: 1; 
+            align-self: flex-end; 
+        }
+
+        .name-bio-wrapper {
+            width: 60%; 
+            margin-right: 140px; 
+            margin-left: 0; 
+            text-align: right; /* تم التعديل لليمين ليتناسب مع RTL */
+            transform: translateY(-20px); 
+        }
+
+        .profile-info h1 {
+            color: white;
+            text-shadow: 1px 1px 10px silver;
+            font-size: 1.2em; 
+            margin-top: 0; 
+            margin-bottom: 5px; 
+            text-align: right; /* <--- تأكيد المحاذاة لليمين */
+        }
+        
+        /* تنسيق نص سلفي - التعديلات الجديدة */
+        .profile-info .selfie-text {
+            color: silver; /* لون مناسب للخلفية الداكنة */
+            font-size: clamp(0.9em, 2.5vw, 1.1em); /* حجم خط متناسق */
+            margin-top: 0px; /* تقليل المسافة من الاسم */
+            margin-bottom: 5px; /* مسافة بينه وبين البايو */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* ظل خفيف */
+            font-weight: 500; /* وزن خط متوسط */
+            text-align: right; /* محاذاة لليمين ليتناسق مع الاسم والاتجاه العربي */
+        }
+
+        /* تعديل نص سلفي للوضع النهاري */
+        body.light-mode .profile-info .selfie-text {
+            color: #666; /* لون داكن في الوضع النهاري */
+            text-shadow: none;
+            text-align: right;
+        }
+
+        .profile-info .bio {
+            color: #65676b;
+            margin-top: 5px; 
+            text-shadow:0 0 10px #65676b;
+            font-size: 18px; 
+        }
+
+        @media (max-width: 600px) {
+            .profile-header {
+                flex-wrap: wrap; 
+                transform: translateY(-50px);
+                padding-bottom: 0;
+                padding-top: 10px;
+            }
+            
+            .profile-photo-wrapper {
+                width: 100px;
+                height: 100px;
+                transform: translateY(-50px); 
+                margin-left: 10px; 
+                margin-right: 10px;
+            }
+
+            .profile-info {
+                width: 100%; 
+                margin-right: 0;
+            }
+            
+            .name-bio-wrapper {
+                text-align: right; 
+            }
+        }
+        
+        .social-links {
+            display: flex;
+            gap: clamp(10px, 3vw, 20px); 
+            justify-content: flex-end;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-section .social-links {
+            justify-content: center;
+        }
+        
+        .social-links a {
+            font-size: clamp(28px, 6vw, 32px); 
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links a.whatsapp { color: #25D366; }
+        .social-links a.instagram { color: #E1306C; }
+        .social-links a.facebook { color: #1877f2; }
+        .social-links a.telegram { color: #0088cc; }
+        .social-links a.gmail { color: #DB4437; } 
+        .social-links a:hover { color: #0b59c3; }
+
+        .content-section {
+            padding: 20px;
+            margin-top: -30px;
+        }
+        
+        .content-section h2 {
+            color: #65676b;
+            font-size: 20px;
+            border-bottom: 1px solid #ced0d4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* --- 7. Box, Carousel, Counters, Rectangles (Original) --- */
+        /* ------------------------------------------------------------------ */
+        #vx {
+            color: white;
+            display: block; 
+            width: fit-content; 
+            text-align: center;
+            margin: 20px auto; 
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-shadow: none;
+            font-size: clamp(1.2em, 4vw, 1.6em); 
+        }
+        
+        .box {
+            width: 90%; 
+            margin: 20px auto;
+            height: 120px;
+            position: relative;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            overflow: hidden;
+            background: #2c4766; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .box .circle {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2c4766;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 0 10px silver;
+            position: relative;
+            z-index: 1;
+        }
+
+        .box .circle::before {
+            content: '';
+            position: absolute;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            border-radius: 50%;
+            border: 4px solid transparent;
+            border-top-color: silver;
+            border-right-color: silver;
+            animation: spin 2.5s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #sv {
+            color: white;
+            text-align: center;
+            font-size: clamp(1em, 3vw, 1.2em); 
+            text-shadow: 0 1px 10px silver;
+            margin: 20px 0 5px 0;
+        }
+        
+        .carousel-section {
+            margin: 10px auto 40px auto;
+            max-width: 90%; 
+            width: 90%; 
+            padding: 20px;
+            background: transparent;
+            box-shadow: none; 
+        }
+
+        .carousel-section h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 10px silver;
+            font-size: clamp(20px, 4vw, 24px); 
+        }
+
+        .carousel-wrapper {
+            width: 100%;
+            aspect-ratio: 16/7; 
+            overflow: hidden;
+            margin: 2rem auto;
+            position: relative;
+            background-color: #2c4766; 
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            position: absolute;
+            transition: transform 300ms ease-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+        
+        .m {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            position: relative;
+            margin: 0 auto 30px auto; 
+            max-width: 95%; 
+            width: clamp(350px, 60vw, 450px); 
+        }
+
+        .m::before {
+            content: "";
+            background-color: #e0e0e0;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: unset;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .progress {
+            background-color: #0C294B;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: unset;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 0%;
+            z-index: -1;
+            transition: 0.4s ease;
+        }
+
+        .m .circle {
+            height: 60px; 
+            width: 60px; 
+            background-color: #fff;
+            color: #999;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #e0e0e0;
+            transition: 0.4s ease;
+            font-size: clamp(14px, 3vw, 16px); 
+            font-weight: bold; 
+            position: relative;
+            z-index: 10;
+        }
+        
+        .m .circle::before {
+            content: '';
+            position: absolute;
+            width: calc(100% + 12px); 
+            height: calc(100% + 12px);
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: silver;
+            border-right-color: silver;
+            animation: spin 2.5s linear infinite;
+            z-index: -1; 
+        }
+
+
+        .m .circle.active {
+            border-color: #0C294B;
+            color: #0C294B;
+        }
+
+        .btn {
+            background-color: #0C294B;
+            color: #fff;
+            border: 2px solid silver;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 10px clamp(30px, 6vw, 40px);
+            margin: 5px;
+            font-size: clamp(14px, 3vw, 16px);
+            transition: 0.3s ease;
+        }
+        
+        .btn:hover:enabled {
+            background-color: #1a416e;
+            border-color: white;
+        }
+        
+        .rectangle-container {
+            display: flex;
+            justify-content: space-around; 
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+            height: clamp(120px, 20vw, 150px); 
+            background-color: #2c4766;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 10px 10px; 
+            box-sizing: border-box;
+            margin: 20px auto;
+        }
+
+        .item-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1; 
+            margin: 0 5px; 
+        }
+
+        .circle-container {
+            position: relative;
+            width: 80px; 
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 5px;
+        }
+
+        .outer-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#ff5733, #33ff57, #3357ff, #f333ff, #ff5733);
+            animation: rotate 3s linear infinite;
+        }
+
+        .inner-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 10px); 
+            height: calc(100% - 10px);
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 2rem; 
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .counter-text {
+            font-size: clamp(0.7rem, 2vw, 0.8rem); 
+            color: #ccc;
+            margin-top: 5px;
+            white-space: nowrap; 
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+            
+        .main-content-wrapper {
+            max-width: 95%; 
+            width: 340px;
+            margin: 40px auto;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; 
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes border-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .rectangle {
+            width: 100%; 
+            height: clamp(80px, 15vw, 100px); 
+            background-color: #21262d;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #58a6ff;
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            animation: fade-in-up 1s ease-out forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rectangle::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400% 400%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: border-glow 15s ease infinite;
+        }
+
+        .rectangle:hover {
+            transform: translateY(-5px);
+            background-color: #30363d;
+        }
+
+        .stars-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: fade-in-up 1s ease-out 0.5s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars-text {
+            font-size: clamp(1rem, 2.5vw, 1.2rem); 
+            color: #8b949e;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .star-group {
+            display: flex;
+            gap: 5px; 
+        }
+
+        .star {
+            width: clamp(30px, 8vw, 40px); 
+            height: clamp(30px, 8vw, 40px);
+            position: relative;
+            clip-path: polygon(50% 0%, 61.8% 38.2%, 100% 38.2%, 69.1% 61.8%, 80.9% 100%, 50% 76.4%, 19.1% 100%, 30.9% 61.8%, 0% 38.2%, 38.2% 38.2%);
+            
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400% 400%;
+            animation: border-glow 15s ease infinite;
+            
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        .star:nth-child(1) { animation-delay: 1s; }
+        .star:nth-child(2) { animation-delay: 1.3s; }
+        .star:nth-child(3) { animation-delay: 1.6s; }
+        .star:nth-child(4) { animation-delay: 1.9s; }
+        .star:nth-child(5) { animation-delay: 2.2s; }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #ccc;
+            text-shadow: 0 0 10px silver;
+        }
+        /* **تنسيقات الكرة الأرضية الجديدة - ببادئات فريدة** */
+/* تنسيق التعليمات */
+.animated-globe-instruction {
+    text-align: center; 
+    margin-top: 20px; 
+    color: #fff; /* تأكد أن هذا اللون يظهر على خلفية مشروعك */
+    font-family: Arial, sans-serif;
+}
+
+/* تهيئة المشهد ثلاثي الأبعاد */
+.animated-globe-scene {
+    width: 250px;
+    height: 250px;
+    perspective: 800px;
+    margin: 50px auto;
+}
+
+/* تنسيقات الكرة الأرضية (العنصر الرئيسي) */
+.animated-globe-element {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 50%;
+    /* الخلفية والتوهج الأزرق */
+    background: radial-gradient(circle at center, #1e3a66 0%, #0d1a26 100%); 
+    box-shadow: 0 0 50px rgba(0, 150, 255, 0.5); 
+
+    /* الرسوم المتحركة التلقائية (دوران بطيء) */
+    animation: animated-globe-spin 30s linear infinite;
+    cursor: grab; 
+}
+
+/* الرسوم المتحركة لدوران الكرة الأرضية */
+@keyframes animated-globe-spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+/* خطوط الشبكة الزرقاء (خطوط الطول والعرض) */
+.animated-globe-line-equator, .animated-globe-line-meridian {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 150, 255, 0.7); 
+    box-sizing: border-box;
+}
+
+/* خطوط الطول والعرض */
+.animated-globe-line-equator {
+    border-top: none;
+    border-bottom: none;
+    background: 
+        radial-gradient(circle at center, transparent 49%, rgba(0, 150, 255, 0.7) 50%, transparent 51%),
+        linear-gradient(to right, transparent 50%, rgba(0, 150, 255, 0.7) 50%, transparent 51%) 0 50% / 100% 1px no-repeat;
+    background-size: 100% 2px;
+}
+
+.animated-globe-line-meridian {
+    transform: rotateY(90deg); 
+}
+
+/* دوائر العرض المائلة */
+.animated-globe-element::before, .animated-globe-element::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(0, 150, 255, 0.5); 
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.animated-globe-element::before {
+    transform: rotateX(45deg);
+}
+
+.animated-globe-element::after {
+    transform: rotateX(-45deg);
+}
+/* **انتهت تنسيقات الكرة الأرضية** */
+
+/* START: ستايلات التحميل (Loading) الفريدة مع النص */
+
+/* ------------------ التنسيق العام والترتيب ------------------ */
+
+/* الحاوية الرئيسية لتجميع النص والشريط معاً رأسيًا في المنتصف */
+#unique-loader-wrapper {
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر (النص والشريط) عمودياً */
+    align-items: center; /* توسيط العناصر داخلياً (أفقياً) */
+    
+    /* إذا كنت تريد توسيط كل شيء في الشاشة (كما كان في الأمثلة السابقة) */
+    /* position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); */
+}
+
+/* تنسيق النص المكتوب */
+#unique-loader-text {
+    text-align: center;
+    margin-bottom: 20px; /* مسافة بين النص وشريط التحميل */
+    color: #f0f0f0; /* لون فاتح للنص (لخلفية داكنة) */
+    font-family: Arial, sans-serif;
+}
+
+#unique-loader-text p {
+    margin: 5px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.english-text {
+    font-size: 14px;
+    font-weight: normal;
+    color: #cccccc;
+    text-shadow:0 0 10px #315191;
+}
+
+/* ------------------ شريط التحميل (الدوائر) ------------------ */
+
+/* حاوية الترتيب الأفقي للدوائر */
+#unique-loader-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+
+/* شكل الدوائر المتحركة (بقي كما هو) */
+.unique-loader-circle {
+    width: 25px; 
+    height: 25px; 
+    margin: 0 8px; 
+    border-radius: 50%;
+    animation: unique-loader-bounce 1.2s infinite ease-in-out;
+}
+
+/* تحديد الألوان وتأخير الحركة لكل دائرة (بقي كما هو) */
+.unique-loader-circle:nth-child(1) { background-color: #e74c3c; animation-delay: 0s; }
+.unique-loader-circle:nth-child(2) { background-color: #f39c12; animation-delay: 0.15s; }
+.unique-loader-circle:nth-child(3) { background-color: #f1c40f; animation-delay: 0.30s; }
+.unique-loader-circle:nth-child(4) { background-color: #2ecc71; animation-delay: 0.45s; }
+.unique-loader-circle:nth-child(5) { background-color: #3498db; animation-delay: 0.60s; }
+
+/* تعريف الحركة (Keyframes) - بقي كما هو */
+@keyframes unique-loader-bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+/* END: ستايلات التحميل (Loading) الفريدة مع النص */
+
+  </style>
+
+</head>
+<body class="dark-mode"> 
+  <div class="switch-container">
+      <label class="switch">
+          <input type="checkbox" id="mode-toggle">
+          <span class="slider">تغيير الوضع / فاتح غامق</span>
+      </label>
+  </div>
+  
+  <div id="loading-page">
+    <div class="container">
+      <span style="--i: 0"></span><span style="--i: 1"></span><span style="--i: 2"></span><span style="--i: 3"></span><span style="--i: 4"></span><span style="--i: 5"></span><span style="--i: 6"></span><span style="--i: 7"></span><span style="--i: 8"></span><span style="--i: 9"></span><span style="--i: 10"></span><span style="--i: 11"></span><span style="--i: 12"></span><span style="--i: 13"></span><span style="--i: 14"></span><span style="--i: 15"></span><span style="--i: 16"></span><span style="--i: 17"></span><span style="--i: 18"></span><span style="--i: 19"></span><span style="--i: 20"></span><span style="--i: 21"></span><span style="--i: 22"></span><span style="--i: 23"></span><span style="--i: 24"></span><span style="--i: 25"></span><span style="--i: 26"></span><span style="--i: 27"></span><span style="--i: 28"></span><span style="--i: 29"></span><span style="--i: 30"></span><span style="--i: 31"></span><span style="--i: 32"></span><span style="--i: 33"></span><span style="--i: 34"></span><span style="--i: 35"></span><span style="--i: 36"></span><span style="--i: 37"></span><span style="--i: 38"></span><span style="--i: 39"></span><span style="--i: 40"></span><span style="--i: 41"></span><span style="--i: 42"></span><span style="--i: 43"></span><span style="--i: 44"></span><span style="--i: 45"></span><span style="--i: 46"></span><span style="--i: 47"></span><span style="--i: 48"></span><span style="--i: 49"></span>
+      <h2 class="welcome-text" >
+        Welcome To My Website
+      </h2>
+    </div>
+    <div class="loading-text">جاري التحميل...</div>
+  </div>
+
+  <div id="main-content">
+      <div class="profile-container animate-on-load" data-delay="0.2">
+          <div class="cover-photo">
+              <img src="./Picsart_25-09-08_12-37-29-130.jpg" alt="Cover Photo">
+          </div>
+          <div class="profile-header">
+              <div class="profile-photo-wrapper">
+                  <img src="/Picsart_25-06-18_14-11-50-685.png" alt="Profile Photo" class="profile-photo">
+                  
+                  
+              </div>
+              <div class="profile-info">
+                  <div class="name-bio-wrapper">
+                      <h1 class="animate-on-load" data-delay="0.4">Omar Abdel Tawab Saleh</h1>
+                      
+                      <p class="selfie-text animate-on-load" data-delay="0.5">
+                          (سلفي)
+                      </p>
+                      <p class="bio animate-on-load" data-delay="0.6">عندي خبرة قوية بفضل الله عزوجل في أمن المعلومات</p>
+                  </div>
+                  <div class="social-links animate-on-load" data-delay="0.8">
+                      
+    <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+
+  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+
+  <h1 id="vx" class="animate-on-load" data-delay="1.0">
+    "Welcome To My Website" 
+  </h1>
+  
+  <div class="rectangle-container animate-on-load" data-delay="1.2">
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter1" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">جمع معلومات</span>
+        </div>
+
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter2" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">عملية تهديد</span>
+        </div>
+
+        <div class="item-container">
+            <div class="circle-container">
+                <div class="outer-circle"></div>
+                <div class="inner-circle">
+                    <span id="counter3" class="counter-number">0</span>
+                </div>
+            </div>
+            <span class="counter-text">فرمطة جهاز </span>
+        </div>
+    </div>
+
+  <div class="box animate-on-load" data-delay="1.4">
+    <div class="circle circle-1">1</div>
+    <div class="circle circle-2">2</div>
+    <div class="circle circle-3">3</div>
+  </div>
+    <h1 id="sv" class="animate-on-load" data-delay="1.6">
+      "Don't forget to mention Allah"
+      <br>
+       "لا تنسى  ذكر الله "
+    </h1>
+   
+
+<div class="carousel-section animate-on-load" data-delay="1.8">
+    <h2>My portfolio ;</h2>
+    <div class="m">
+      <div class="progress" id="progress"></div>
+      <div class="circle active">5</div> 
+      <div class="circle">4</div>
+      <div class="circle">3</div>
+      <div class="circle">2</div>
+      <div class="circle">1</div>
+    </div>
+
+    
+    <div class="carousel-wrapper">
+      <div class="slide" data-slide>
+        <img src="./Picsart_25-09-02_05-55-24-273.jpg" alt="Portfolio Image 5">
+      </div>
+      <div class="slide" data-slide>
+        <img src="./Picsart_25-08-24_08-36-22-530.jpg" alt="Portfolio Image 4">
+      </div>
+      <div class="slide" data-slide>
+        <img src="./Picsart_25-08-26_14-28-51-514.png" alt="Portfolio Image 3">
+      </div>
+      <div class="slide" data-slide>
+        <img src="./Picsart_25-07-22_12-45-13-501.jpg" alt="Portfolio Image 2">
+      </div>
+      <div class="slide" data-slide>
+        <img src="./IMG-20250512-WA0077.jpg" alt="Portfolio Image 1">
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn" id="prev" disabled>السابق</button>
+      <button class="btn" id="next">التالي</button>
+    </div>
+<div class="social-links animate-on-load" data-delay="2.0">
+  <a href="https://www.instagram.com/your_username_here" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.facebook.com/share/1BguQJhrMX/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://t.me/OmarAbdelTawabSalehDeveloper" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://wa.me/201202763155" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<p class="animated-globe-instruction">" Omar Abdel Tawab Saleh "</p>
+<div class="animated-globe-scene">
+    <div id="animated-globe-element" class="animated-globe-element">
+        <div class="animated-globe-line-equator"></div>
+        <div class="animated-globe-line-meridian"></div>
+    </div>
+</div>
+
+<div id="unique-loader-wrapper">
+    <div id="unique-loader-text">
+       
+        <p class="english-text">Don't forget to remember Allah</p>
+    </div>
+    
+    <div id="unique-loader-container">
+        <div class="unique-loader-circle"></div>
+        <div class="unique-loader-circle"></div>
+        <div class="unique-loader-circle"></div>
+        <div class="unique-loader-circle"></div>
+        <div class="unique-loader-circle"></div>
+    </div>
+      
+</div>
+
+
+<div class="main-content-wrapper animate-on-load" data-delay="2.2">
+        <a href="https://www.facebook.com/share/p/1CjA55hsBR/" class="rectangle">
+            "متنساش تقييم تعاملنا معاك" </a>
+
+        <div class="stars-container">
+            <div class="stars-text">
+             " دوس علي المربع "
+            </div>
+      
+            <div class="star-group">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+    <span>&copy;</span> All rights reserved, Omar Abd El-Tawab Saleh
+</div>
+
+  </div> 
+
+  <a 
+        href="https://wa.me/201202763155" 
+        class="whatsapp-fixed-btn"
+        id="whatsappButton"
+        target="_blank" 
+        rel="noopener noreferrer"
+        onclick="startWhatsappAnimation(event)"
+    >
+        WhatsApp
+    </a>
+
+<script>
+  // **متغيرات الوضع الليلي/النهاري**
+  const toggleSwitch = document.getElementById('mode-toggle');
+  const body = document.body;
+
+  // **دالة الوضع الليلي/النهاري**
+  function switchTheme(event) {
+      if (event.target.checked) {
+          // الوضع النهاري (Light Mode)
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light');
+      } else {
+          // الوضع الليلي (Dark Mode)
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+      }
+  }
+  
+  // **تحميل تفضيل المستخدم**
+  function loadTheme() {
+      const currentTheme = localStorage.getItem('theme');
+      
+      // إذا كان هناك تفضيل محفوظ، طبّقه
+      if (currentTheme) {
+          if (currentTheme === 'light') {
+              body.classList.add('light-mode');
+              body.classList.remove('dark-mode');
+              toggleSwitch.checked = true; // تحريك الزر لليمين (لإظهار الشمس)
+          } else {
+              body.classList.add('dark-mode');
+              body.classList.remove('light-mode');
+              toggleSwitch.checked = false; // تحريك الزر لليسار (لإظهار القمر)
+          }
+      } else {
+          // الافتراضي هو Dark Mode (من تنسيق الـ CSS الأصلي)
+          body.classList.add('dark-mode');
+          toggleSwitch.checked = false;
+      }
+  }
+
+  // الاستماع إلى حدث التغيير على زر التبديل
+  toggleSwitch.addEventListener('change', switchTheme);
+  
+  // استدعاء الدالة عند تحميل الصفحة للتطبيق الفوري
+  loadTheme();
+  
+  
+  // ------------------------------------------------------------------
+  // **كود الجافاسكريبت الأصلي (مع دمج تعديلات التحميل)**
+  // ------------------------------------------------------------------
+  
+  // دالة تطبيق الظهور التدريجي
+  function applyEntranceAnimation() {
+      const animatedElements = document.querySelectorAll('.animate-on-load');
+      animatedElements.forEach((element) => {
+          const delay = parseFloat(element.getAttribute('data-delay')); 
+          
+          setTimeout(() => {
+              element.classList.add('visible');
+          }, delay * 1000); 
+      });
+  }
+
+  setTimeout(function() {
+      const loadingPage = document.getElementById('loading-page');
+      const mainContent = document.getElementById('main-content');
+      const whatsappButton = document.getElementById('whatsappButton'); 
+
+      loadingPage.classList.add('hidden'); // إخفاء صفحة التحميل
+      
+      setTimeout(() => {
+          mainContent.style.display = 'block';
+          mainContent.classList.add('visible');
+          
+          whatsappButton.classList.add('show'); 
+
+          // استدعاء دالة تطبيق الظهور التدريجي
+          applyEntranceAnimation();
+
+          // **كود عدادات المستطيلات**
+          function animateCounter(counterId, targetNumber, duration) {
+              const counter = document.getElementById(counterId);
+              let startTimestamp = null;
+
+              const animate = (timestamp) => {
+                  if (!startTimestamp) startTimestamp = timestamp;
+                  const progress = timestamp - startTimestamp;
+                  const percentage = Math.min(progress / duration, 1);
+                  const currentCount = Math.floor(percentage * targetNumber);
+
+                  counter.textContent = currentCount;
+
+                  if (percentage < 1) {
+                      requestAnimationFrame(animate);
+                  }
+              };
+              requestAnimationFrame(animate);
+          }
+
+          animateCounter('counter1', 121, 2000);
+          animateCounter('counter2', 50, 2500);
+          animateCounter('counter3', 97, 3000);
+
+      }, 1000); // إظهار المحتوى الرئيسي بعد ثانية واحدة من بدء الإخفاء
+  }, 5000);
+
+  // كود دوائر الأرقام 1, 2, 3
+  const circles = document.querySelectorAll('.box .circle'); 
+  let counter = 1;
+
+  function updateCounter() {
+      if (circles.length >= 3) {
+        circles[0].textContent = counter;
+        circles[1].textContent = counter + 1;
+        circles[2].textContent = counter + 2;
+        counter = (counter % 98) + 1; 
+      }
+  }
+
+  setInterval(updateCounter, 1000);
+
+  // JavaScript for the integrated Carousel & Progress
+  const slides = document.querySelectorAll("[data-slide]");
+  const progress = document.getElementById("progress");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const carouselCircles = document.querySelectorAll(".carousel-section .m .circle"); 
+
+  let currSlide = 0;
+  let maxSlide = slides.length - 1;
+
+  const updateCarousel = (number = 0) => {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${(index - number) * 100}%)`;
+    });
+  };
+
+  const updateProgress = () => {
+    // تفعيل الدوائر بناءً على الشريحة الحالية (مع عكس الترتيب لـ RTL)
+    carouselCircles.forEach((circle, index) => {
+      if (index === maxSlide - currSlide) { 
+        circle.classList.add("active");
+      } else {
+        circle.classList.remove("active");
+      }
+    });
+    
+    progress.style.width = (currSlide / (carouselCircles.length - 1)) * 100 + "%";
+
+    // تفعيل وإلغاء تفعيل الأزرار
+    if (currSlide === 0) {
+      prev.disabled = true;
+    } else if (currSlide === maxSlide) {
+      next.disabled = true;
+    } else {
+      prev.disabled = false;
+      next.disabled = false;
+    }
+  };
+
+  next.addEventListener("click", () => {
+    if (currSlide < maxSlide) {
+      currSlide++;
+      updateCarousel(currSlide);
+      updateProgress();
+    }
+  });
+
+  prev.addEventListener("click", () => {
+    if (currSlide > 0) {
+      currSlide--;
+      updateCarousel(currSlide);
+      updateProgress();
+    }
+  });
+
+  // تهيئة عند تحميل الصفحة
+  updateCarousel();
+  updateProgress();
+
+    // JavaScript لزر الواتساب
+    function startWhatsappAnimation(event) {
+        const button = document.getElementById('whatsappButton');
+        
+        button.classList.add('animate-colors');
+        
+        event.preventDefault(); 
+        
+        setTimeout(() => {
+            window.location.href = button.href;
+        }, 1000);
+    }
+
+  </script>
+  
+</body>
+</html>
